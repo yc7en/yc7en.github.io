@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next gemini use-motion" lang="zh-Hans">
+<html class="theme-next pisces use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -79,19 +79,19 @@
 
 
 
-<meta name="description" content="python正则 常用re.findall(r&amp;#39;pattern&amp;#39;,&amp;lt;string&amp;gt;),得到一个list re 模块提供了不少有用的函数，用以匹配字符串，比如：  compile 函数 match 函数 search 函数 findall 函数 finditer 函数 split 函数 sub 函数 subn 函数  re 模块的一般使用步骤如下：  使用 compile">
+<meta name="description" content="python正则常用re.findall(r&amp;#39;pattern&amp;#39;,&amp;lt;string&amp;gt;),得到一个list re 模块提供了不少有用的函数，用以匹配字符串，比如：  compile 函数 match 函数 search 函数 findall 函数 finditer 函数 split 函数 sub 函数 subn 函数">
 <meta name="keywords" content="python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python 正则">
 <meta property="og:url" content="http://yoursite.com/2018/01/29/Python/python正则/index.html">
 <meta property="og:site_name" content="笨鸟先飞">
-<meta property="og:description" content="python正则 常用re.findall(r&amp;#39;pattern&amp;#39;,&amp;lt;string&amp;gt;),得到一个list re 模块提供了不少有用的函数，用以匹配字符串，比如：  compile 函数 match 函数 search 函数 findall 函数 finditer 函数 split 函数 sub 函数 subn 函数  re 模块的一般使用步骤如下：  使用 compile">
+<meta property="og:description" content="python正则常用re.findall(r&amp;#39;pattern&amp;#39;,&amp;lt;string&amp;gt;),得到一个list re 模块提供了不少有用的函数，用以匹配字符串，比如：  compile 函数 match 函数 search 函数 findall 函数 finditer 函数 split 函数 sub 函数 subn 函数">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2018/01/29/Python/python正则/img/2018-01-27-23-23-08.png">
-<meta property="og:updated_time" content="2018-01-28T16:52:20.408Z">
+<meta property="og:updated_time" content="2018-01-28T17:10:22.983Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python 正则">
-<meta name="twitter:description" content="python正则 常用re.findall(r&amp;#39;pattern&amp;#39;,&amp;lt;string&amp;gt;),得到一个list re 模块提供了不少有用的函数，用以匹配字符串，比如：  compile 函数 match 函数 search 函数 findall 函数 finditer 函数 split 函数 sub 函数 subn 函数  re 模块的一般使用步骤如下：  使用 compile">
+<meta name="twitter:description" content="python正则常用re.findall(r&amp;#39;pattern&amp;#39;,&amp;lt;string&amp;gt;),得到一个list re 模块提供了不少有用的函数，用以匹配字符串，比如：  compile 函数 match 函数 search 函数 findall 函数 finditer 函数 split 函数 sub 函数 subn 函数">
 <meta name="twitter:image" content="http://yoursite.com/2018/01/29/Python/python正则/img/2018-01-27-23-23-08.png">
 
 
@@ -100,7 +100,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Gemini',
+    scheme: 'Pisces',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -260,7 +260,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Song Liheng">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/author.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -322,8 +322,7 @@
       
 
       
-        <h1 id="python正则"><a href="#python正则" class="headerlink" title="python正则"></a>python正则</h1><p><img src="/2018/01/29/Python/python正则/img/2018-01-27-23-23-08.png" alt=""></p>
-<p>常用<code>re.findall(r&#39;pattern&#39;,&lt;string&gt;)</code>,得到一个list</p>
+        <h1 id="python正则"><a href="#python正则" class="headerlink" title="python正则"></a>python正则</h1><p>常用<code>re.findall(r&#39;pattern&#39;,&lt;string&gt;)</code>,得到一个list</p>
 <p>re 模块提供了不少有用的函数，用以匹配字符串，比如：</p>
 <ul>
 <li>compile 函数</li>
@@ -333,8 +332,10 @@
 <li>finditer 函数</li>
 <li>split 函数</li>
 <li>sub 函数</li>
-<li>subn 函数</li>
+<li>subn 函数<a id="more"></a>
+</li>
 </ul>
+<p><img src="/2018/01/29/Python/python正则/img/2018-01-27-23-23-08.png" alt=""></p>
 <p>re 模块的一般使用步骤如下：</p>
 <ul>
 <li>使用 compile 函数将正则表达式的字符串形式编译为一个 Pattern 对象</li>
@@ -445,6 +446,10 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
+              <img class="site-author-image" itemprop="image"
+                src="/images/author.jpg"
+                alt="Song Liheng" />
+            
               <p class="site-author-name" itemprop="name">Song Liheng</p>
               <p class="site-description motion-element" itemprop="description"></p>
           </div>
@@ -469,7 +474,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -540,7 +545,7 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
 
 
 
