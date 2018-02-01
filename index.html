@@ -249,7 +249,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/31/Python/Pandas完成常见excel任务/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/31/公司问题/网商客户问题解决/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Song Liheng">
@@ -268,7 +268,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/01/31/Python/Pandas完成常见excel任务/" itemprop="url">未命名</a></h1>
+                <a class="post-title-link" href="/2018/01/31/公司问题/网商客户问题解决/" itemprop="url">未命名</a></h1>
         
 
         <div class="post-meta">
@@ -280,7 +280,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-31T01:04:14+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-31T15:02:10+08:00">
                 2018-01-31
               </time>
             
@@ -320,99 +320,34 @@
       
         
           
-            <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <meta name="generator" content="pandoc">
-  <title>Pandas完成常见的excel任务</title>
-  <style type="text/css">code{white-space: pre;}</style>
-  <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-  </style>
-  <link rel="stylesheet" href="2.css" type="text/css">
-</head>
-<body>
-<div id="header">
-<h1 class="title">Pandas完成常见的excel任务</h1>
-<h3 class="date">2018-01-30 14:00:00</h3>
-</div>
-<h1 id="python正则">python正则</h1>
-<h2 id="excel中的sum">Excel中的sum()</h2>
-<p><strong>使用excel</strong></p>
-<p>我在J列中添加了公式sum(G2:I2)</p>
-<div class="figure">
-<img src="/2018/01/31/Python/Pandas完成常见excel任务/img/2018-01-31-01-03-21.png">
-
-</div>
-<p><strong>使用pandas</strong></p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="im">import</span> pandas <span class="im">as</span> pd
-<span class="im">import</span> numpy <span class="im">as</span> np
-
-df[<span class="st">&quot;total&quot;</span>] <span class="op">=</span> df[<span class="st">&quot;Jan&quot;</span>] <span class="op">+</span> df[<span class="st">&quot;Feb&quot;</span>] <span class="op">+</span> df[<span class="st">&quot;Mar&quot;</span>]</code></pre></div>
-<div class="figure">
-<img src="/2018/01/31/Python/Pandas完成常见excel任务/img/2018-01-31-01-02-55.png">
-
-</div>
-<p><strong>使用excel</strong></p>
-<p><strong>使用pandas</strong></p>
-<p>现在我们要把每月的总和相加得到它们的和。这里pandas和Excel有点不同。在Excel的单元格里把每个月的总和相加很简单。由于pandas需要维护整个DataFrame的完整性，所以需要一些额外的步骤。</p>
-<p>首先，建立所有列的总和栏</p>
-<p><code>sum_row=df[[&quot;Jan&quot;,&quot;Feb&quot;,&quot;Mar&quot;,&quot;total&quot;]].sum()</code></p>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>sum_row Jan 1462000 Feb 1507000 Mar 717000 total 3686000 dtype: int64</p>
-</blockquote>
-</blockquote>
-</blockquote>
-<p><code>df_sum=pd.DataFrame(data=sum_row).T</code></p>
-<div class="figure">
-<img src="/2018/01/31/Python/Pandas完成常见excel任务/img/2018-01-31-01-08-15.png">
-
-</div>
-<p><code>df_sum=df_sum.reindex(columns=df.columns)</code></p>
-<div class="figure">
-<img src="/2018/01/31/Python/Pandas完成常见excel任务/img/2018-01-31-01-08-35.png">
-
-</div>
-</body>
-</html>
+            <hr>
+<p>title： 网商问题汇总</p>
+<h2 id="date-：-2018-02-01-13-00-00"><a href="#date-：-2018-02-01-13-00-00" class="headerlink" title="date ： 2018-02-01 13:00:00"></a>date ： 2018-02-01 13:00:00</h2><h1 id="症状及药方"><a href="#症状及药方" class="headerlink" title="症状及药方"></a>症状及药方</h1><h2 id="客户一直没有打回，也没有收到第二条授信短信。"><a href="#客户一直没有打回，也没有收到第二条授信短信。" class="headerlink" title="客户一直没有打回，也没有收到第二条授信短信。"></a>客户一直没有打回，也没有收到第二条授信短信。</h2><p>症状：客户只收到第一条短信，第二条授信短信迟迟没有收到，也没有被网商打回。客户扫码是“加紧审核中”。</p>
+<p>核实：<br><code>db.cmisCoreReceive.find({&quot;_id&quot;:&quot;6532673&quot;}).limit(20);</code></p>
+<p>为004</p>
+<p><code>db.bcpCoreReceive.find({&quot;appMethod&quot;:&quot;CreditEventReq&quot;,&quot;loanNo&quot;:&quot;6527575&quot;}).limit(10);</code></p>
+<p>没有任何内容。</p>
+<p>这类情况如果持续时间超过一天，可能是网商那边出问题了，发编号给@宋立恒，联系网商处理。</p>
+<h2 id="支付宝账号填错了怎么办"><a href="#支付宝账号填错了怎么办" class="headerlink" title="支付宝账号填错了怎么办"></a>支付宝账号填错了怎么办</h2><p>症状：提示“客户的支付宝信息有误。可能是姓名身份证和支付宝账号不匹配，也可能是支付宝账号未实名认证。”<br>曾经有一个督导提交了5次，都被打回了。  </p>
+<p>督导操作：</p>
+<p>打回到预申请，在督导签约环节，在工作台-&gt;待办业务-&gt;合同签订（操作）-&gt;合同打印按钮-&gt;改支付宝账号</p>
+<p>改完支付宝点击“重新生成合同”。</p>
+<h2 id="网商的授信申请不准入"><a href="#网商的授信申请不准入" class="headerlink" title="网商的授信申请不准入"></a>网商的授信申请不准入</h2><p>症状：提示“授信申请不准入” 或 提示“网商已存在记录，如扫码申贷，请联系客服。如已贷款，请重新选择其他渠道。”</p>
+<p>处理：<br><code>db.bcpCoreReceive.find({&quot;appBizContent&quot;: {$regex:/130630198211302110.*/i}})</code><br>查看身份证号是否有二维码申贷，如果有记录，证明扫码申贷了，需要<strong>网商管理端取消申贷</strong>，然后再推，否则代表网商有贷款</p>
+<p><code>db.bcpCoreReceive.find({&quot;appMethod&quot;:&quot;ApplyEventReq&quot;,&quot;loanNo&quot;:&quot;6534833&quot;}).limit(10)</code><br>查看是否存在申贷记录</p>
+<h1 id="常用脚本"><a href="#常用脚本" class="headerlink" title="常用脚本"></a>常用脚本</h1><h2 id="查cmis网商基本信息"><a href="#查cmis网商基本信息" class="headerlink" title="查cmis网商基本信息"></a>查cmis网商基本信息</h2><p>(都是输入申请编号)，如借据号、身份证号、姓名、支付宝账号、是否在网商黑名单</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> t.loan_no,t.* <span class="keyword">FROM</span> LPB_APPL_DN t <span class="keyword">WHERE</span> APPL_SEQ =<span class="string">'2439250'</span>;</div><div class="line"><span class="keyword">SELECT</span> t.alipay_id,t.* <span class="keyword">FROM</span> LC_APPL t <span class="keyword">WHERE</span> APPL_SEQ = <span class="string">'2439250'</span>;</div><div class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> CustCreditBlackList <span class="keyword">WHERE</span> ID_NO </div><div class="line"><span class="keyword">in</span>(<span class="keyword">SELECT</span> ID_NO <span class="keyword">FROM</span> LC_APPL <span class="keyword">WHERE</span> APPL_SEQ = <span class="string">'2439250'</span>);</div></pre></td></tr></table></figure>
+<h2 id="加入网商黑名单（身份证、姓名）"><a href="#加入网商黑名单（身份证、姓名）" class="headerlink" title="加入网商黑名单（身份证、姓名）"></a>加入网商黑名单（身份证、姓名）</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">insert</span> <span class="keyword">into</span> cmis.custcreditblacklist(<span class="keyword">id</span>,cust_name,id_no,reason,createtime)</div><div class="line"> <span class="keyword">values</span>(sys_guid(),<span class="string">'李喜冬'</span>,<span class="string">'130630198211302110'</span>,<span class="string">'网商支取有问题'</span>,<span class="string">'2018-01-31 23:00:00'</span>)</div></pre></td></tr></table></figure>
+<h2 id="去掉网商黑名单-身份证"><a href="#去掉网商黑名单-身份证" class="headerlink" title="去掉网商黑名单(身份证)"></a>去掉网商黑名单(身份证)</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">delete</span> cmis.custcreditblacklist <span class="keyword">where</span> id_no=<span class="string">'130630198211302110'</span>;</div></pre></td></tr></table></figure>
+<h2 id="删掉资金方"><a href="#删掉资金方" class="headerlink" title="删掉资金方"></a>删掉资金方</h2><p><strong>脚本慎用</strong>，必须要求督导打回</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">delete</span> cmis.base_cap_con_tet_rel t <span class="keyword">where</span> t.appl_seq= ;</div></pre></td></tr></table></figure>
+<h1 id="网商管理端使用"><a href="#网商管理端使用" class="headerlink" title="网商管理端使用"></a>网商管理端使用</h1><p><a href="https://partner.mybank.cn/platform/login.htm" target="_blank" rel="external">https://partner.mybank.cn/platform/login.htm</a></p>
+<p>支付宝登录。</p>
+<p>这类问题  到线上关闭客户，之后提醒分支再试。</p>
+<p><img src="/2018/01/31/公司问题/网商客户问题解决/img/2018-01-31-13-51-29.png" alt=""></p>
+<p><img src="/2018/01/31/公司问题/网商客户问题解决/img/2018-01-31-13-52-24.png" alt=""></p>
+<p><img src="/2018/01/31/公司问题/网商客户问题解决/img/2018-01-31-13-52-46.png" alt=""></p>
+<p><img src="/2018/01/31/公司问题/网商客户问题解决/img/2018-01-31-13-53-13.png" alt=""></p>
 
           
         
@@ -531,46 +466,15 @@ df[<span class="st">&quot;total&quot;</span>] <span class="op">=</span> df[<span
 
       
         
-          
-            <h1 id="Pandas完成常见的excel任务"><a href="#Pandas完成常见的excel任务" class="headerlink" title="Pandas完成常见的excel任务"></a>Pandas完成常见的excel任务</h1><h2 id="Excel中的sum"><a href="#Excel中的sum" class="headerlink" title="Excel中的sum()"></a>Excel中的sum()</h2><p><strong>使用excel</strong></p>
-<p>我在J列中添加了公式sum(G2:I2)</p>
-<p><img src="/2018/01/30/Python/Pandas完成常见excel任务/img/2018-01-31-01-03-21.png" alt=""></p>
-<p><strong>使用pandas</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"></div><div class="line">df[<span class="string">"total"</span>] = df[<span class="string">"Jan"</span>] + df[<span class="string">"Feb"</span>] + df[<span class="string">"Mar"</span>]</div></pre></td></tr></table></figure>
-<p><img src="/2018/01/30/Python/Pandas完成常见excel任务/img/2018-01-31-01-02-55.png" alt=""></p>
-<p><strong>使用excel</strong></p>
-<p><strong>使用pandas</strong></p>
-<p>现在我们要把每月的总和相加得到它们的和。这里pandas和Excel有点不同。在Excel的单元格里把每个月的总和相加很简单。由于pandas需要维护整个DataFrame的完整性，所以需要一些额外的步骤。</p>
-<p>首先，建立所有列的总和栏</p>
-<p><code>sum_row=df[[&quot;Jan&quot;,&quot;Feb&quot;,&quot;Mar&quot;,&quot;total&quot;]].sum()</code></p>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>sum_row<br>   Jan      1462000<br>   Feb      1507000<br>   Mar       717000<br>   total    3686000<br>   dtype: int64</p>
-</blockquote>
-</blockquote>
-</blockquote>
-<p><code>df_sum=pd.DataFrame(data=sum_row).T</code></p>
-<p><img src="/2018/01/30/Python/Pandas完成常见excel任务/img/2018-01-31-01-08-15.png" alt=""></p>
-<p><code>df_sum=df_sum.reindex(columns=df.columns)</code></p>
-<p><img src="/2018/01/30/Python/Pandas完成常见excel任务/img/2018-01-31-01-08-35.png" alt=""></p>
-<p><code>df_final=df.append(df_sum,ignore_index=True)</code></p>
-<p><img src="/2018/01/30/Python/Pandas完成常见excel任务/img/2018-01-31-01-09-19.png" alt=""></p>
-<h2 id="分类汇总"><a href="#分类汇总" class="headerlink" title="分类汇总"></a>分类汇总</h2><p><img src="/2018/01/30/Python/Pandas完成常见excel任务/img/2018-01-31-01-11-17.png" alt=""></p>
-<p>在pandas中创建分类汇总，是使用groupby 来完成的。</p>
-<p><code>df_sub=df_final[[&quot;abbrev&quot;,&quot;Jan&quot;,&quot;Feb&quot;,&quot;Mar&quot;,&quot;total&quot;]].groupby(&#39;abbrev&#39;).sum()</code></p>
-<p><img src="/2018/01/30/Python/Pandas完成常见excel任务/img/2018-01-31-01-12-32.png" alt=""></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">money</span><span class="params">(x)</span>:</span></div><div class="line">    <span class="keyword">return</span> <span class="string">"$&#123;:,.0f&#125;"</span>.format(x)</div><div class="line"> </div><div class="line">formatted_df = df_sub.applymap(money)</div><div class="line">formatted_df</div></pre></td></tr></table></figure>
-<p><img src="/2018/01/30/Python/Pandas完成常见excel任务/img/2018-01-31-01-13-28.png" alt=""></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">df_sub_sum=pd.DataFrame(data=sum_row).T</div><div class="line">df_sub_sum=df_sub_sum.applymap(money)</div></pre></td></tr></table></figure>
-<p><img src="/2018/01/30/Python/Pandas完成常见excel任务/img/2018-01-31-01-14-36.png" alt=""></p>
-<p><code>final_table = formatted_df.append(df_sub_sum)</code></p>
-<p><img src="/2018/01/30/Python/Pandas完成常见excel任务/img/2018-01-31-01-14-57.png" alt=""></p>
-<p>你可以注意到总和行的索引号是‘0’。我们想要使用rename 来重命名它。</p>
-<p><code>final_table = final_table.rename(index={0:&quot;Total&quot;})</code></p>
-<p><img src="/2018/01/30/Python/Pandas完成常见excel任务/img/2018-01-31-01-15-25.png" alt=""></p>
-
-          
+          <h1 id="Pandas完成常见的excel任务"><a href="#Pandas完成常见的excel任务" class="headerlink" title="Pandas完成常见的excel任务"></a>Pandas完成常见的excel任务</h1><h2 id="Excel中的sum"><a href="#Excel中的sum" class="headerlink" title="Excel中的sum()"></a>Excel中的sum()</h2><p><strong>使用excel</strong></p>
+<p>我在J列中添加了公式sum(G2:I2)<br></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/01/30/Python/Pandas完成常见excel任务/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>

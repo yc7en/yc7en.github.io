@@ -79,13 +79,13 @@
 
 
 
-<meta name="description" content="Pandas完成常见的excel任务Excel中的sum()使用excel 我在J列中添加了公式sum(G2:I2)  使用pandas 1234import pandas as pdimport numpy as npdf[&quot;total&quot;] = df[&quot;Jan&quot;] + df[&quot;Feb&quot;] + df[&quot;Mar&quot;]  使用excel 使用pandas 现在我们要把每月的总和相加得到它们的和。这里pa">
+<meta name="description" content="Pandas完成常见的excel任务Excel中的sum()使用excel 我在J列中添加了公式sum(G2:I2)">
 <meta name="keywords" content="python,pandas">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Pandas完成常见的excel任务">
 <meta property="og:url" content="http://yoursite.com/2018/01/30/Python/Pandas完成常见excel任务/index.html">
 <meta property="og:site_name" content="笨鸟先飞">
-<meta property="og:description" content="Pandas完成常见的excel任务Excel中的sum()使用excel 我在J列中添加了公式sum(G2:I2)  使用pandas 1234import pandas as pdimport numpy as npdf[&quot;total&quot;] = df[&quot;Jan&quot;] + df[&quot;Feb&quot;] + df[&quot;Mar&quot;]  使用excel 使用pandas 现在我们要把每月的总和相加得到它们的和。这里pa">
+<meta property="og:description" content="Pandas完成常见的excel任务Excel中的sum()使用excel 我在J列中添加了公式sum(G2:I2)">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2018/01/30/Python/Pandas完成常见excel任务/img/2018-01-31-01-03-21.png">
 <meta property="og:image" content="http://yoursite.com/2018/01/30/Python/Pandas完成常见excel任务/img/2018-01-31-01-02-55.png">
@@ -98,10 +98,10 @@
 <meta property="og:image" content="http://yoursite.com/2018/01/30/Python/Pandas完成常见excel任务/img/2018-01-31-01-14-36.png">
 <meta property="og:image" content="http://yoursite.com/2018/01/30/Python/Pandas完成常见excel任务/img/2018-01-31-01-14-57.png">
 <meta property="og:image" content="http://yoursite.com/2018/01/30/Python/Pandas完成常见excel任务/img/2018-01-31-01-15-25.png">
-<meta property="og:updated_time" content="2018-01-30T17:16:51.000Z">
+<meta property="og:updated_time" content="2018-01-30T17:22:42.197Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Pandas完成常见的excel任务">
-<meta name="twitter:description" content="Pandas完成常见的excel任务Excel中的sum()使用excel 我在J列中添加了公式sum(G2:I2)  使用pandas 1234import pandas as pdimport numpy as npdf[&quot;total&quot;] = df[&quot;Jan&quot;] + df[&quot;Feb&quot;] + df[&quot;Mar&quot;]  使用excel 使用pandas 现在我们要把每月的总和相加得到它们的和。这里pa">
+<meta name="twitter:description" content="Pandas完成常见的excel任务Excel中的sum()使用excel 我在J列中添加了公式sum(G2:I2)">
 <meta name="twitter:image" content="http://yoursite.com/2018/01/30/Python/Pandas完成常见excel任务/img/2018-01-31-01-03-21.png">
 
 
@@ -333,8 +333,7 @@
 
       
         <h1 id="Pandas完成常见的excel任务"><a href="#Pandas完成常见的excel任务" class="headerlink" title="Pandas完成常见的excel任务"></a>Pandas完成常见的excel任务</h1><h2 id="Excel中的sum"><a href="#Excel中的sum" class="headerlink" title="Excel中的sum()"></a>Excel中的sum()</h2><p><strong>使用excel</strong></p>
-<p>我在J列中添加了公式sum(G2:I2)</p>
-<p><img src="/2018/01/30/Python/Pandas完成常见excel任务/img/2018-01-31-01-03-21.png" alt=""></p>
+<p>我在J列中添加了公式sum(G2:I2)<br><a id="more"></a><br><img src="/2018/01/30/Python/Pandas完成常见excel任务/img/2018-01-31-01-03-21.png" alt=""></p>
 <p><strong>使用pandas</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"></div><div class="line">df[<span class="string">"total"</span>] = df[<span class="string">"Jan"</span>] + df[<span class="string">"Feb"</span>] + df[<span class="string">"Mar"</span>]</div></pre></td></tr></table></figure>
 <p><img src="/2018/01/30/Python/Pandas完成常见excel任务/img/2018-01-31-01-02-55.png" alt=""></p>
@@ -343,14 +342,13 @@
 <p>现在我们要把每月的总和相加得到它们的和。这里pandas和Excel有点不同。在Excel的单元格里把每个月的总和相加很简单。由于pandas需要维护整个DataFrame的完整性，所以需要一些额外的步骤。</p>
 <p>首先，建立所有列的总和栏</p>
 <p><code>sum_row=df[[&quot;Jan&quot;,&quot;Feb&quot;,&quot;Mar&quot;,&quot;total&quot;]].sum()</code></p>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>sum_row<br>   Jan      1462000<br>   Feb      1507000<br>   Mar       717000<br>   total    3686000<br>   dtype: int64</p>
-</blockquote>
-</blockquote>
-</blockquote>
-<p><code>df_sum=pd.DataFrame(data=sum_row).T</code></p>
+<pre><code>sum_row
+  Jan      1462000
+  Feb      1507000
+  Mar       717000
+  total    3686000
+  dtype: int64
+</code></pre><p><code>df_sum=pd.DataFrame(data=sum_row).T</code></p>
 <p><img src="/2018/01/30/Python/Pandas完成常见excel任务/img/2018-01-31-01-08-15.png" alt=""></p>
 <p><code>df_sum=df_sum.reindex(columns=df.columns)</code></p>
 <p><img src="/2018/01/30/Python/Pandas完成常见excel任务/img/2018-01-31-01-08-35.png" alt=""></p>
@@ -411,7 +409,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/01/31/Python/Pandas完成常见excel任务/" rel="prev" title="">
+              <a href="/2018/01/31/公司问题/网商客户问题解决/" rel="prev" title="">
                  <i class="fa fa-chevron-right"></i>
               </a>
             
