@@ -249,7 +249,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/31/公司问题/网商客户问题解决/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/30/公司问题/网商客户问题解决/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Song Liheng">
@@ -268,7 +268,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/01/31/公司问题/网商客户问题解决/" itemprop="url">未命名</a></h1>
+                <a class="post-title-link" href="/2019/01/30/公司问题/网商客户问题解决/" itemprop="url">网商问题汇总</a></h1>
         
 
         <div class="post-meta">
@@ -280,8 +280,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-31T15:02:10+08:00">
-                2018-01-31
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-30T14:00:00+08:00">
+                2019-01-30
               </time>
             
 
@@ -320,9 +320,7 @@
       
         
           
-            <hr>
-<p>title： 网商问题汇总</p>
-<h2 id="date-：-2018-02-01-13-00-00"><a href="#date-：-2018-02-01-13-00-00" class="headerlink" title="date ： 2018-02-01 13:00:00"></a>date ： 2018-02-01 13:00:00</h2><h1 id="症状及药方"><a href="#症状及药方" class="headerlink" title="症状及药方"></a>症状及药方</h1><h2 id="客户一直没有打回，也没有收到第二条授信短信。"><a href="#客户一直没有打回，也没有收到第二条授信短信。" class="headerlink" title="客户一直没有打回，也没有收到第二条授信短信。"></a>客户一直没有打回，也没有收到第二条授信短信。</h2><p>症状：客户只收到第一条短信，第二条授信短信迟迟没有收到，也没有被网商打回。客户扫码是“加紧审核中”。</p>
+            <h1 id="症状及药方"><a href="#症状及药方" class="headerlink" title="症状及药方"></a>症状及药方</h1><h2 id="客户一直没有打回，也没有收到第二条授信短信。"><a href="#客户一直没有打回，也没有收到第二条授信短信。" class="headerlink" title="客户一直没有打回，也没有收到第二条授信短信。"></a>客户一直没有打回，也没有收到第二条授信短信。</h2><p>症状：客户只收到第一条短信，第二条授信短信迟迟没有收到，也没有被网商打回。客户扫码是“加紧审核中”。</p>
 <p>核实：<br><code>db.cmisCoreReceive.find({&quot;_id&quot;:&quot;6532673&quot;}).limit(20);</code></p>
 <p>为004</p>
 <p><code>db.bcpCoreReceive.find({&quot;appMethod&quot;:&quot;CreditEventReq&quot;,&quot;loanNo&quot;:&quot;6527575&quot;}).limit(10);</code></p>
@@ -337,17 +335,17 @@
 <p><code>db.bcpCoreReceive.find({&quot;appMethod&quot;:&quot;ApplyEventReq&quot;,&quot;loanNo&quot;:&quot;6534833&quot;}).limit(10)</code><br>查看是否存在申贷记录</p>
 <h1 id="常用脚本"><a href="#常用脚本" class="headerlink" title="常用脚本"></a>常用脚本</h1><h2 id="查cmis网商基本信息"><a href="#查cmis网商基本信息" class="headerlink" title="查cmis网商基本信息"></a>查cmis网商基本信息</h2><p>(都是输入申请编号)，如借据号、身份证号、姓名、支付宝账号、是否在网商黑名单</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> t.loan_no,t.* <span class="keyword">FROM</span> LPB_APPL_DN t <span class="keyword">WHERE</span> APPL_SEQ =<span class="string">'2439250'</span>;</div><div class="line"><span class="keyword">SELECT</span> t.alipay_id,t.* <span class="keyword">FROM</span> LC_APPL t <span class="keyword">WHERE</span> APPL_SEQ = <span class="string">'2439250'</span>;</div><div class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> CustCreditBlackList <span class="keyword">WHERE</span> ID_NO </div><div class="line"><span class="keyword">in</span>(<span class="keyword">SELECT</span> ID_NO <span class="keyword">FROM</span> LC_APPL <span class="keyword">WHERE</span> APPL_SEQ = <span class="string">'2439250'</span>);</div></pre></td></tr></table></figure>
-<h2 id="加入网商黑名单（身份证、姓名）"><a href="#加入网商黑名单（身份证、姓名）" class="headerlink" title="加入网商黑名单（身份证、姓名）"></a>加入网商黑名单（身份证、姓名）</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">insert</span> <span class="keyword">into</span> cmis.custcreditblacklist(<span class="keyword">id</span>,cust_name,id_no,reason,createtime)</div><div class="line"> <span class="keyword">values</span>(sys_guid(),<span class="string">'李喜冬'</span>,<span class="string">'130630198211302110'</span>,<span class="string">'网商支取有问题'</span>,<span class="string">'2018-01-31 23:00:00'</span>)</div></pre></td></tr></table></figure>
-<h2 id="去掉网商黑名单-身份证"><a href="#去掉网商黑名单-身份证" class="headerlink" title="去掉网商黑名单(身份证)"></a>去掉网商黑名单(身份证)</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">delete</span> cmis.custcreditblacklist <span class="keyword">where</span> id_no=<span class="string">'130630198211302110'</span>;</div></pre></td></tr></table></figure>
+<h2 id="加入网商黑名单（身份证、姓名）"><a href="#加入网商黑名单（身份证、姓名）" class="headerlink" title="加入网商黑名单（身份证、姓名）"></a>加入网商黑名单（身份证、姓名）</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">insert</span> <span class="keyword">into</span> cmis.custcreditblacklist(<span class="keyword">id</span>,cust_name,id_no,reason,createtime)</div><div class="line"> <span class="keyword">values</span>(sys_guid(),<span class="string">'张三'</span>,<span class="string">'130630198211302210'</span>,<span class="string">'网商支取有问题'</span>,<span class="string">'2018-01-31 23:00:00'</span>)</div></pre></td></tr></table></figure>
+<h2 id="去掉网商黑名单-身份证"><a href="#去掉网商黑名单-身份证" class="headerlink" title="去掉网商黑名单(身份证)"></a>去掉网商黑名单(身份证)</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">delete</span> cmis.custcreditblacklist <span class="keyword">where</span> id_no=<span class="string">'130630198211302210'</span>;</div></pre></td></tr></table></figure>
 <h2 id="删掉资金方"><a href="#删掉资金方" class="headerlink" title="删掉资金方"></a>删掉资金方</h2><p><strong>脚本慎用</strong>，必须要求督导打回</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">delete</span> cmis.base_cap_con_tet_rel t <span class="keyword">where</span> t.appl_seq= ;</div></pre></td></tr></table></figure>
 <h1 id="网商管理端使用"><a href="#网商管理端使用" class="headerlink" title="网商管理端使用"></a>网商管理端使用</h1><p><a href="https://partner.mybank.cn/platform/login.htm" target="_blank" rel="external">https://partner.mybank.cn/platform/login.htm</a></p>
 <p>支付宝登录。</p>
 <p>这类问题  到线上关闭客户，之后提醒分支再试。</p>
-<p><img src="/2018/01/31/公司问题/网商客户问题解决/img/2018-01-31-13-51-29.png" alt=""></p>
-<p><img src="/2018/01/31/公司问题/网商客户问题解决/img/2018-01-31-13-52-24.png" alt=""></p>
-<p><img src="/2018/01/31/公司问题/网商客户问题解决/img/2018-01-31-13-52-46.png" alt=""></p>
-<p><img src="/2018/01/31/公司问题/网商客户问题解决/img/2018-01-31-13-53-13.png" alt=""></p>
+<p><img src="/2019/01/30/公司问题/网商客户问题解决/img/2018-01-31-13-51-29.png" alt=""></p>
+<p><img src="/2019/01/30/公司问题/网商客户问题解决/img/2018-01-31-13-52-24.png" alt=""></p>
+<p><img src="/2019/01/30/公司问题/网商客户问题解决/img/2018-01-31-13-52-46.png" alt=""></p>
+<p><img src="/2019/01/30/公司问题/网商客户问题解决/img/2018-01-31-13-53-13.png" alt=""></p>
 
           
         
