@@ -249,6 +249,278 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/31/公司问题/网商客户问题解决/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Song Liheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/author.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笨鸟先飞">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/31/公司问题/网商客户问题解决/" itemprop="url">未命名</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-31T15:02:10+08:00">
+                2018-01-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<p>title： 网商问题汇总</p>
+<h2 id="date-：-2018-02-01-13-00-00"><a href="#date-：-2018-02-01-13-00-00" class="headerlink" title="date ： 2018-02-01 13:00:00"></a>date ： 2018-02-01 13:00:00</h2><h1 id="症状及药方"><a href="#症状及药方" class="headerlink" title="症状及药方"></a>症状及药方</h1><h2 id="客户一直没有打回，也没有收到第二条授信短信。"><a href="#客户一直没有打回，也没有收到第二条授信短信。" class="headerlink" title="客户一直没有打回，也没有收到第二条授信短信。"></a>客户一直没有打回，也没有收到第二条授信短信。</h2><p>症状：客户只收到第一条短信，第二条授信短信迟迟没有收到，也没有被网商打回。客户扫码是“加紧审核中”。</p>
+<p>核实：<br><code>db.cmisCoreReceive.find({&quot;_id&quot;:&quot;6532673&quot;}).limit(20);</code></p>
+<p>为004</p>
+<p><code>db.bcpCoreReceive.find({&quot;appMethod&quot;:&quot;CreditEventReq&quot;,&quot;loanNo&quot;:&quot;6527575&quot;}).limit(10);</code></p>
+<p>没有任何内容。</p>
+<p>这类情况如果持续时间超过一天，可能是网商那边出问题了，发编号给@宋立恒，联系网商处理。</p>
+<h2 id="支付宝账号填错了怎么办"><a href="#支付宝账号填错了怎么办" class="headerlink" title="支付宝账号填错了怎么办"></a>支付宝账号填错了怎么办</h2><p>症状：提示“客户的支付宝信息有误。可能是姓名身份证和支付宝账号不匹配，也可能是支付宝账号未实名认证。”<br>曾经有一个督导提交了5次，都被打回了。  </p>
+<p>督导操作：</p>
+<p>打回到预申请，在督导签约环节，在工作台-&gt;待办业务-&gt;合同签订（操作）-&gt;合同打印按钮-&gt;改支付宝账号</p>
+<p>改完支付宝点击“重新生成合同”。</p>
+<h2 id="网商的授信申请不准入"><a href="#网商的授信申请不准入" class="headerlink" title="网商的授信申请不准入"></a>网商的授信申请不准入</h2><p>症状：提示“授信申请不准入” 或 提示“网商已存在记录，如扫码申贷，请联系客服。如已贷款，请重新选择其他渠道。”</p>
+<p>处理：<br><code>db.bcpCoreReceive.find({&quot;appBizContent&quot;: {$regex:/130630198211302110.*/i}})</code><br>查看身份证号是否有二维码申贷，如果有记录，证明扫码申贷了，需要<strong>网商管理端取消申贷</strong>，然后再推，否则代表网商有贷款</p>
+<p><code>db.bcpCoreReceive.find({&quot;appMethod&quot;:&quot;ApplyEventReq&quot;,&quot;loanNo&quot;:&quot;6534833&quot;}).limit(10)</code><br>查看是否存在申贷记录</p>
+<h1 id="常用脚本"><a href="#常用脚本" class="headerlink" title="常用脚本"></a>常用脚本</h1><h2 id="查cmis网商基本信息"><a href="#查cmis网商基本信息" class="headerlink" title="查cmis网商基本信息"></a>查cmis网商基本信息</h2><p>(都是输入申请编号)，如借据号、身份证号、姓名、支付宝账号、是否在网商黑名单</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> t.loan_no,t.* <span class="keyword">FROM</span> LPB_APPL_DN t <span class="keyword">WHERE</span> APPL_SEQ =<span class="string">'2439250'</span>;</div><div class="line"><span class="keyword">SELECT</span> t.alipay_id,t.* <span class="keyword">FROM</span> LC_APPL t <span class="keyword">WHERE</span> APPL_SEQ = <span class="string">'2439250'</span>;</div><div class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> CustCreditBlackList <span class="keyword">WHERE</span> ID_NO </div><div class="line"><span class="keyword">in</span>(<span class="keyword">SELECT</span> ID_NO <span class="keyword">FROM</span> LC_APPL <span class="keyword">WHERE</span> APPL_SEQ = <span class="string">'2439250'</span>);</div></pre></td></tr></table></figure>
+<h2 id="加入网商黑名单（身份证、姓名）"><a href="#加入网商黑名单（身份证、姓名）" class="headerlink" title="加入网商黑名单（身份证、姓名）"></a>加入网商黑名单（身份证、姓名）</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">insert</span> <span class="keyword">into</span> cmis.custcreditblacklist(<span class="keyword">id</span>,cust_name,id_no,reason,createtime)</div><div class="line"> <span class="keyword">values</span>(sys_guid(),<span class="string">'李喜冬'</span>,<span class="string">'130630198211302110'</span>,<span class="string">'网商支取有问题'</span>,<span class="string">'2018-01-31 23:00:00'</span>)</div></pre></td></tr></table></figure>
+<h2 id="去掉网商黑名单-身份证"><a href="#去掉网商黑名单-身份证" class="headerlink" title="去掉网商黑名单(身份证)"></a>去掉网商黑名单(身份证)</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">delete</span> cmis.custcreditblacklist <span class="keyword">where</span> id_no=<span class="string">'130630198211302110'</span>;</div></pre></td></tr></table></figure>
+<h2 id="删掉资金方"><a href="#删掉资金方" class="headerlink" title="删掉资金方"></a>删掉资金方</h2><p><strong>脚本慎用</strong>，必须要求督导打回</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">delete</span> cmis.base_cap_con_tet_rel t <span class="keyword">where</span> t.appl_seq= ;</div></pre></td></tr></table></figure>
+<h1 id="网商管理端使用"><a href="#网商管理端使用" class="headerlink" title="网商管理端使用"></a>网商管理端使用</h1><p><a href="https://partner.mybank.cn/platform/login.htm" target="_blank" rel="external">https://partner.mybank.cn/platform/login.htm</a></p>
+<p>支付宝登录。</p>
+<p>这类问题  到线上关闭客户，之后提醒分支再试。</p>
+<p><img src="/2018/01/31/公司问题/网商客户问题解决/img/2018-01-31-13-51-29.png" alt=""></p>
+<p><img src="/2018/01/31/公司问题/网商客户问题解决/img/2018-01-31-13-52-24.png" alt=""></p>
+<p><img src="/2018/01/31/公司问题/网商客户问题解决/img/2018-01-31-13-52-46.png" alt=""></p>
+<p><img src="/2018/01/31/公司问题/网商客户问题解决/img/2018-01-31-13-53-13.png" alt=""></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/30/Python/Pandas完成常见excel任务/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Song Liheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/author.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笨鸟先飞">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/30/Python/Pandas完成常见excel任务/" itemprop="url">Pandas完成常见的excel任务</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-30T14:00:00+08:00">
+                2018-01-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="Pandas完成常见的excel任务"><a href="#Pandas完成常见的excel任务" class="headerlink" title="Pandas完成常见的excel任务"></a>Pandas完成常见的excel任务</h1><h2 id="Excel中的sum"><a href="#Excel中的sum" class="headerlink" title="Excel中的sum()"></a>Excel中的sum()</h2><p><strong>使用excel</strong></p>
+<p>我在J列中添加了公式sum(G2:I2)<br></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/01/30/Python/Pandas完成常见excel任务/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/29/Python/python正则/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -927,7 +1199,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -940,7 +1212,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
