@@ -6,10 +6,10 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="theme-color" content="#222">
 
 
@@ -20,8 +20,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -40,7 +40,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -48,9 +48,9 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="mongodb,数据库," />
+  <meta name="keywords" content="mongodb,数据库,">
 
 
 
@@ -120,7 +120,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/02/03/数据库/MongoDB/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/02/03/数据库/MongoDB/">
 
 
 
@@ -138,7 +138,7 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
@@ -148,13 +148,13 @@
   <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">笨鸟先飞</span>
         <span class="logo-line-after"><i></i></span>
@@ -184,7 +184,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             首页
           </a>
@@ -194,7 +194,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             标签
           </a>
@@ -204,7 +204,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
             
             分类
           </a>
@@ -214,7 +214,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
           </a>
@@ -248,20 +248,20 @@
   
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/03/数据库/MongoDB/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Song Liheng">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/author.jpg">
     </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="笨鸟先飞">
     </span>
 
@@ -320,7 +320,7 @@
       
 
       
-        <h1 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">db.collection1.find();//查询集合中所有的数据  </div><div class="line">db.collection1.find(&#123;age:7&#125;);//查询年龄为7的数据  </div><div class="line">db.collection1.find(&#123;age:7&#125;,&#123;name:1&#125;);  //查询年龄为7的数据，只返回name字段数据</div><div class="line">db.collection1.find(&#123;age:7,name:&quot;xiaomu&quot;&#125;,&#123;name:1,age:1&#125;);//查询age为7，name为xiaomu的数据，返回name和age字段</div></pre></td></tr></table></figure>
+        <h1 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">db.collection1.find();//查询集合中所有的数据  </span><br><span class="line">db.collection1.find(&#123;age:7&#125;);//查询年龄为7的数据  </span><br><span class="line">db.collection1.find(&#123;age:7&#125;,&#123;name:1&#125;);  //查询年龄为7的数据，只返回name字段数据</span><br><span class="line">db.collection1.find(&#123;age:7,name:&quot;xiaomu&quot;&#125;,&#123;name:1,age:1&#125;);//查询age为7，name为xiaomu的数据，返回name和age字段</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
 <h1 id="筛选"><a href="#筛选" class="headerlink" title="筛选"></a>筛选</h1><p>筛选关系</p>
 <ul>
@@ -330,7 +330,7 @@
 <li>小于等于 lte (less than equal)</li>
 <li>不等于 ne   （not equal）</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">db.collection1.find(&#123;price:&#123;$all:[1,2]&#125;&#125;);</div><div class="line">//（包含。。并且包含。。）此处price是个数组，此方法查询所有price包含1和2的数据</div><div class="line">db.collection1.find(&#123;price:&#123;$in:[1,2]&#125;&#125;);</div><div class="line">//（包含。。或者包含。。）查询price中含有1或者2的数据</div><div class="line">db.collection1.find(&#123;price:&#123;$nin:[1,2]&#125;&#125;);</div><div class="line">//（不包含。。并且不包含。。）查询price中不含有1并且不含有2的数据</div><div class="line">db.collection1.find(&#123;$or:[&#123;name:&quot;xiaomu&quot;&#125;,&#123;price:&#123;$in:[3]&#125;&#125;]&#125;);</div><div class="line">//（。。或者。。）查询name为xiaomu或者价格包含3的数据</div><div class="line">db.collection1.find(&#123;$nor:[&#123;name:&quot;xiaomu&quot;&#125;,&#123;name:&quot;xiaoli&quot;&#125;]&#125;);</div><div class="line">//（既不也不）查询name不为xiaomu或者name不为xiaoli的数据</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">db.collection1.find(&#123;price:&#123;$all:[1,2]&#125;&#125;);</span><br><span class="line">//（包含。。并且包含。。）此处price是个数组，此方法查询所有price包含1和2的数据</span><br><span class="line">db.collection1.find(&#123;price:&#123;$in:[1,2]&#125;&#125;);</span><br><span class="line">//（包含。。或者包含。。）查询price中含有1或者2的数据</span><br><span class="line">db.collection1.find(&#123;price:&#123;$nin:[1,2]&#125;&#125;);</span><br><span class="line">//（不包含。。并且不包含。。）查询price中不含有1并且不含有2的数据</span><br><span class="line">db.collection1.find(&#123;$or:[&#123;name:&quot;xiaomu&quot;&#125;,&#123;price:&#123;$in:[3]&#125;&#125;]&#125;);</span><br><span class="line">//（。。或者。。）查询name为xiaomu或者价格包含3的数据</span><br><span class="line">db.collection1.find(&#123;$nor:[&#123;name:&quot;xiaomu&quot;&#125;,&#123;name:&quot;xiaoli&quot;&#125;]&#125;);</span><br><span class="line">//（既不也不）查询name不为xiaomu或者name不为xiaoli的数据</span><br></pre></td></tr></table></figure>
 <h1 id="分页"><a href="#分页" class="headerlink" title="分页"></a>分页</h1><p><code>db.collection1.find().skip(0).limit(10);</code><br>//查询从0条开始，查询10条，skip()方法默认参数为 0 ，表示跳过的条数</p>
 <h1 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h1><p><code>db.collection1.find().sort({age:1});</code><br>//按照年龄升序排序，为-1的话表示降序排序</p>
 <h1 id="存在"><a href="#存在" class="headerlink" title="存在"></a>存在</h1><p><code>db.c2.find({hight:{$exists:1}})；</code>//查询存在hight字段的数据</p>
@@ -354,14 +354,14 @@
 
     
       <div id="wechat" style="display: inline-block">
-        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Song Liheng 微信支付"/>
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Song Liheng 微信支付">
         <p>微信支付</p>
       </div>
     
 
     
       <div id="alipay" style="display: inline-block">
-        <img id="alipay_qr" src="/images/alipay.jpg" alt="Song Liheng 支付宝"/>
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Song Liheng 支付宝">
         <p>支付宝</p>
       </div>
     
@@ -395,8 +395,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/02/03/模板/" rel="next" title="模板">
-                <i class="fa fa-chevron-left"></i> 模板
+              <a href="/2018/01/30/Python/Pandas完成常见excel任务/" rel="next" title="Pandas完成常见的excel任务">
+                <i class="fa fa-chevron-left"></i> Pandas完成常见的excel任务
               </a>
             
           </div>
@@ -405,8 +405,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/02/03/诗词/Song-Of-The-Lonely-Mountain/" rel="prev" title="Song Of The Lonely Mountain">
-                Song Of The Lonely Mountain <i class="fa fa-chevron-right"></i>
+              <a href="/2018/02/03/模板/" rel="prev" title="模板">
+                模板 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -471,11 +471,9 @@
 
       <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image"
-                src="/images/author.jpg"
-                alt="Song Liheng" />
+              <img class="site-author-image" itemprop="image" src="/images/author.jpg" alt="Song Liheng">
             
               <p class="site-author-name" itemprop="name">Song Liheng</p>
               <p class="site-description motion-element" itemprop="description"></p>
