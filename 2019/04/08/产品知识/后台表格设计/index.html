@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="产品,技能,后台,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="原文名称:《数据表格设计》,略有改动原文作者:安琪Angela原文地址:https://www.jianshu.com/p/5a01b762bf78作者做了很全面的归纳和总结，本文非常值得学习。  我将从功能、交互、UI三个维度对表格设计进行全方位总结分析。">
+<meta name="keywords" content="产品,技能,后台">
+<meta property="og:type" content="article">
+<meta property="og:title" content="后台数据表格设计">
+<meta property="og:url" content="http://yoursite.com/2019/04/08/产品知识/后台表格设计/index.html">
+<meta property="og:site_name" content="笨鸟先飞">
+<meta property="og:description" content="原文名称:《数据表格设计》,略有改动原文作者:安琪Angela原文地址:https://www.jianshu.com/p/5a01b762bf78作者做了很全面的归纳和总结，本文非常值得学习。  我将从功能、交互、UI三个维度对表格设计进行全方位总结分析。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2019/04/08/产品知识/后台表格设计/img/2019-07-27-22-28-17.png">
+<meta property="og:image" content="http://yoursite.com/2019/04/08/产品知识/后台表格设计/img/2019-07-27-22-28-58.png">
+<meta property="og:image" content="http://yoursite.com/2019/04/08/产品知识/后台表格设计/img/2019-07-27-22-30-19.png">
+<meta property="og:image" content="http://yoursite.com/2019/04/08/产品知识/后台表格设计/img/2019-07-27-22-30-59.png">
+<meta property="og:image" content="http://yoursite.com/2019/04/08/产品知识/后台表格设计/img/2019-07-27-22-31-30.png">
+<meta property="og:image" content="http://yoursite.com/2019/04/08/产品知识/后台表格设计/img/2019-07-27-22-32-15.png">
+<meta property="og:image" content="http://yoursite.com/2019/04/08/产品知识/后台表格设计/img/2019-07-27-22-32-36.png">
+<meta property="og:image" content="http://yoursite.com/2019/04/08/产品知识/后台表格设计/img/2019-07-27-22-33-36.png">
+<meta property="og:image" content="http://yoursite.com/2019/04/08/产品知识/后台表格设计/img/2019-07-27-22-34-06.png">
+<meta property="og:image" content="http://yoursite.com/2019/04/08/产品知识/后台表格设计/img/2019-07-27-22-34-50.png">
+<meta property="og:image" content="http://yoursite.com/2019/04/08/产品知识/后台表格设计/img/2019-07-27-22-35-21.png">
+<meta property="og:image" content="http://yoursite.com/2019/04/08/产品知识/后台表格设计/img/2019-07-27-22-35-57.png">
+<meta property="og:image" content="http://yoursite.com/2019/04/08/产品知识/后台表格设计/img/2019-07-27-22-36-21.png">
+<meta property="og:image" content="http://yoursite.com/2019/04/08/产品知识/后台表格设计/img/2019-07-27-22-36-57.png">
+<meta property="og:image" content="http://yoursite.com/2019/04/08/产品知识/后台表格设计/img/2019-07-27-22-38-53.png">
+<meta property="og:image" content="http://yoursite.com/2019/04/08/产品知识/后台表格设计/img/2019-07-27-22-39-15.png">
+<meta property="og:image" content="http://yoursite.com/2019/04/08/产品知识/后台表格设计/img/2019-07-27-22-40-06.png">
+<meta property="og:image" content="http://yoursite.com/2019/04/08/产品知识/后台表格设计/img/2019-07-27-22-40-40.png">
+<meta property="og:image" content="http://yoursite.com/2019/04/08/产品知识/后台表格设计/img/2019-07-27-22-41-07.png">
+<meta property="og:image" content="http://yoursite.com/2019/04/08/产品知识/后台表格设计/img/2019-07-27-22-41-38.png">
+<meta property="og:image" content="http://yoursite.com/2019/04/08/产品知识/后台表格设计/img/2019-07-27-22-42-22.png">
+<meta property="og:image" content="http://yoursite.com/2019/04/08/产品知识/后台表格设计/img/2019-07-27-22-43-01.png">
+<meta property="og:image" content="http://yoursite.com/2019/04/08/产品知识/后台表格设计/img/2019-07-27-22-43-20.png">
+<meta property="og:updated_time" content="2019-07-28T03:25:33.314Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="后台数据表格设计">
+<meta name="twitter:description" content="原文名称:《数据表格设计》,略有改动原文作者:安琪Angela原文地址:https://www.jianshu.com/p/5a01b762bf78作者做了很全面的归纳和总结，本文非常值得学习。  我将从功能、交互、UI三个维度对表格设计进行全方位总结分析。">
+<meta name="twitter:image" content="http://yoursite.com/2019/04/08/产品知识/后台表格设计/img/2019-07-27-22-28-17.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/04/08/产品知识/后台表格设计/">
+
+
+
+
+
+  <title>后台数据表格设计 | 笨鸟先飞</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">笨鸟先飞</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/08/产品知识/后台表格设计/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Song Liheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/author.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笨鸟先飞">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">后台数据表格设计</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-08T16:13:39+08:00">
+                2019-04-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>原文名称:《数据表格设计》,略有改动<br>原文作者:安琪Angela<br>原文地址:<a href="https://www.jianshu.com/p/5a01b762bf78" target="_blank" rel="noopener">https://www.jianshu.com/p/5a01b762bf78</a><br>作者做了很全面的归纳和总结，本文非常值得学习。</p>
+</blockquote>
+<p>我将从功能、交互、UI三个维度对表格设计进行全方位总结分析。</p>
+<p><img src="/2019/04/08/产品知识/后台表格设计/img/2019-07-27-22-28-17.png" alt=""></p>
+<a id="more"></a>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>表格，又称为表，既是一种可视化交流模式，又是一种组织整理数据的手段。人们在通讯交流、科学研究以及数据分析活动当中广泛采用着形形色色的表格。表的结构如下图：</p>
+<p><img src="/2019/04/08/产品知识/后台表格设计/img/2019-07-27-22-28-58.png" alt=""></p>
+<p>那表格的使用场景：</p>
+<ul>
+<li>展现信息全面性。很多图表类型无法展示数据特点。表格无疑是组织大量信息通用性最高的一种表达方式，既可陈列信息，又可以表达信息之间的关系。</li>
+<li>编辑性大于易读性。需要对数据进行增删改查。</li>
+<li>需要对比数据。比如对比行与行之间的数据，了解两者差异。</li>
+</ul>
+<p>一个简简单单的表格功能其实非常强大，也是非常复杂的。但是不管怎么样，我们不变的原则是：</p>
+<ul>
+<li>更<strong>直观</strong>地对比。通过交互和视觉对冗杂的信息进行优化，从而更直观形象地对比。比如隔行使用斑马线增强横向导视。 </li>
+<li>更<strong>精准</strong>地计算。对于大数据量的表格，数据的精准度非常重要。比如根据提供的精准度要求，定义展示数据的小数位数。</li>
+<li>更<strong>快速</strong>地决策。比如在行列末尾增加汇总信息（总计或平均值），在每个分类里增加小计，可以让管理者一目了然地了解数据，快速决策。</li>
+</ul>
+<h2 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h2><h3 id="添加数据"><a href="#添加数据" class="headerlink" title="添加数据"></a>添加数据</h3><p>用户在原有的表结构中，增加一行数据。</p>
+<p><img src="/2019/04/08/产品知识/后台表格设计/img/2019-07-27-22-30-19.png" alt=""></p>
+<h3 id="导出数据"><a href="#导出数据" class="headerlink" title="导出数据"></a>导出数据</h3><p>根据业务对数据精准度的需求，定义一个导出规则。</p>
+<p>1.不保留数据格式化。比如该数值有五位小数，导入我们系统格式化为两位小数，这种方式导出后还是五位小数。<br>2.保留数据格式化。比如该数值有五位小数，导入我们系统格式化为两位小数，这种方式导出后还是两位小数。</p>
+<h3 id="显示字段。"><a href="#显示字段。" class="headerlink" title="显示字段。"></a>显示字段。</h3><p>列数过多时，可以隐藏重要性低的列，更好的突出重要性高的列，主次分明，减少干扰。</p>
+<p><img src="/2019/04/08/产品知识/后台表格设计/img/2019-07-27-22-30-59.png" alt=""></p>
+<h3 id="搜索和筛选"><a href="#搜索和筛选" class="headerlink" title="搜索和筛选"></a>搜索和筛选</h3><p>按预定目标过滤出某种具有特定性质的数据的操作过程，帮助我们实现对信息的快速分析。</p>
+<p><img src="/2019/04/08/产品知识/后台表格设计/img/2019-07-27-22-31-30.png" alt=""></p>
+<p>1.简易搜索。适合筛选条件不明确和筛选频率不高的表格。尽量采用模糊搜索，降低操作成本。<br>优点：灵活选择关键词，节省空间。<br>缺点：可筛选信息不明显。</p>
+<p>2.高级筛选器。适合筛选条件明确和筛选频率高的表格。<br>优点：曝光度高，操作成本低。<br>缺点：占用空间大，不易扩展。</p>
+<p>3.组合筛选器。适合筛选条件不明确但筛选频率高的表格。<br>优点：主次分明，搜索框可满足大部分用户需求，更高的要求有较深的入口，减少干扰。<br>缺点：如果搜索不能满足大部分用户需求而需要高级筛选，必然增加了用户的操作步骤。</p>
+<p>4.列筛选器。适合筛选条件单一的表格。<br>优点：筛选当前列，更直观。<br>缺点：只能选择单列筛选。</p>
+<h3 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h3><p>设置查看数据优先级顺序，快速发掘最关注的信息。</p>
+<p><img src="/2019/04/08/产品知识/后台表格设计/img/2019-07-27-22-32-15.png" alt=""></p>
+<h3 id="汇总信息"><a href="#汇总信息" class="headerlink" title="汇总信息"></a>汇总信息</h3><p>汇总信息。在原始数据上增加汇总信息（合计值或平均值），可以减少用户的计算，达到快速决策的目的。</p>
+<p><img src="/2019/04/08/产品知识/后台表格设计/img/2019-07-27-22-32-36.png" alt=""></p>
+<p>1.复杂分页条。可以设置每页显示条数，适合大数据量。<br>优点：用户不仅对于数据量有宏观上的把握，还可以灵活设置每页显示条数。<br>缺点：分页条占用空间大。</p>
+<p>2.简单分页条。不可以设置每页显示条数，适合较大数据量。<br>优点：用户对于数据量有宏观上的把握。<br>缺点：分页条占用空间较大。</p>
+<p>3.加载更多。适合小数据量。<br>优点：节省空间，沉浸式阅览。<br>缺点：对数据量难以把握，操作不灵活。</p>
+<h2 id="交互"><a href="#交互" class="headerlink" title="交互"></a>交互</h2><h3 id="固定行列"><a href="#固定行列" class="headerlink" title="固定行列"></a>固定行列</h3><p>根据7±2的原则，随着行列数增加，如果表头不固定，超负荷记忆信息会使用户遗忘信息。  </p>
+<p><img src="/2019/04/08/产品知识/后台表格设计/img/2019-07-27-22-33-36.png" alt=""></p>
+<p>1.固定行。行数过多，出现纵向滚动条时，用户需要了解行中每个数据对应的列字段名。<br>2.固定列。列数过多，出现横向滚动条时，用户需要了解列中每个数据对应的行字段名。  </p>
+<h3 id="批量操作"><a href="#批量操作" class="headerlink" title="批量操作"></a>批量操作</h3><p>批量选择记录进行操作。  </p>
+<p><img src="/2019/04/08/产品知识/后台表格设计/img/2019-07-27-22-34-06.png" alt=""></p>
+<p>1.记录条数。适用于所选数据较多，不重要的数据。<br>优点：节省空间，直观了解所选条数。<br>缺点：无法直观查看所选项。  </p>
+<p>2.记录所选项。适用于所选数据较少，重要的数据。<br>优点：可以直观查看所选项。<br>缺点：占用空间，无法直观了解所选条数。  </p>
+<h3 id="查看详情"><a href="#查看详情" class="headerlink" title="查看详情"></a>查看详情</h3><p>创建信息层级，只展现核心内容，非重点内容需要用户通过更深的入口查看。主次分明地展示信息，方便用户快速定位所需信息。</p>
+<p><img src="/2019/04/08/产品知识/后台表格设计/img/2019-07-27-22-34-50.png" alt=""></p>
+<ol>
+<li>跳转。把 ID、名称等唯一性标志的指加上超链接，点击可以查看该条记录的详情。</li>
+<li>查看。在操作列中增加“查看”功能，点击可以查看该条记录的详情。</li>
+</ol>
+<h3 id="编辑"><a href="#编辑" class="headerlink" title="编辑"></a>编辑</h3><p>对表格内容进行编辑。</p>
+<p><img src="/2019/04/08/产品知识/后台表格设计/img/2019-07-27-22-35-21.png" alt=""></p>
+<p>1.直接编辑。点击内容直接编辑，适合易编辑性大于易读性的数据。<br>优点：编辑时不影响查看其他内容。<br>缺点：编辑空间有限，不适合编辑内容较多的数据。</p>
+<p>2.悬浮层编辑。点击单元格的“编辑”按钮，编辑该项内容。<br>优点：编辑空间较大，编辑内容的自由度比直接编辑高一点。<br>缺点：遮挡部分界面，无法看到上下文。</p>
+<p>3.弹窗编辑。点击操作列的“编辑”按钮，弹出编辑窗口。<br>优点：聚焦操作，可编辑内容多的数据。<br>缺点：遮挡全部页面，无法看到其他内容。</p>
+<h3 id="反馈"><a href="#反馈" class="headerlink" title="反馈"></a>反馈</h3><p>鼠标悬停高亮底色，使得该行与行界限分明。强化了横向导视，解决列数过多引起数据错行的问题</p>
+<p><img src="/2019/04/08/产品知识/后台表格设计/img/2019-07-27-22-35-57.png" alt=""></p>
+<h3 id="精简表头"><a href="#精简表头" class="headerlink" title="精简表头"></a>精简表头</h3><p>简明扼要的列名可以节省表头空间，避免“头重脚轻”的表格布局。</p>
+<p><img src="/2019/04/08/产品知识/后台表格设计/img/2019-07-27-22-36-21.png" alt=""></p>
+<h3 id="显示长内容"><a href="#显示长内容" class="headerlink" title="显示长内容"></a>显示长内容</h3><p>当前页面信息无法展示完全。</p>
+<p><img src="/2019/04/08/产品知识/后台表格设计/img/2019-07-27-22-36-57.png" alt=""></p>
+<p>1..浮层查看。适合查看较少内容。<br>优点：灵活查看内容，操作成本低。<br>缺点：影响查看其他内容。  </p>
+<p>2.下拉查看。适合查看较多内容。<br>优点：不影响查看其他内容。<br>缺点：不能灵活查看内容，操作成本高。  </p>
+<h3 id="空单元格"><a href="#空单元格" class="headerlink" title="空单元格"></a>空单元格</h3><p>要避免空单元格会给用户带来困惑，是零值还是空值呢？</p>
+<ol>
+<li>数据为零值，则单元格显示为0，而且数据格式（小数位数等）要与同列数据相同处理，方便与其他数据进行计算。</li>
+<li>数据为空值，则单元格显示为短横线“-”，表示空值</li>
+</ol>
+<h3 id="数据格式化"><a href="#数据格式化" class="headerlink" title="数据格式化"></a>数据格式化</h3><p>绝对精确的数据影响人们的阅读。我们可以根据客户需求和场景决定数据精确度范围。</p>
+<p><img src="/2019/04/08/产品知识/后台表格设计/img/2019-07-27-22-38-53.png" alt=""></p>
+<ol>
+<li>显示为数值，设置小数位数，千分位和数值单位（比如万）等。</li>
+<li>显示为百分比，设置小数位数。</li>
+</ol>
+<h3 id="对齐规范"><a href="#对齐规范" class="headerlink" title="对齐规范"></a>对齐规范</h3><p>信息更加规整，方便对比同列数据，提高阅读速度。</p>
+<p><img src="/2019/04/08/产品知识/后台表格设计/img/2019-07-27-22-39-15.png" alt=""></p>
+<ol>
+<li>文本左对齐。符合从左到右的阅读文字习惯。 </li>
+<li>数值右对齐。符合从右到左的对比数字习惯。有小数点按小数点对齐。可以方便用户进行心算，不需要转换阅读思维。  </li>
+<li>固定操作按钮居中。  </li>
+<li>表头与信息内容一致。（视情况而定，比如笔者设计的表格要考虑交叉表，选择了表头居中，交叉表的定义请看“复杂表格-交叉表”部分。）</li>
+</ol>
+<p>由于交叉表会在数值上套上好几层表头，所以下图错误示例中页面重量往右下角拉扯，造成页面不平衡，而且这个情况会随着套的表头层数越来越严重，所以我们选择了统一所有表头居中。</p>
+<p><img src="/2019/04/08/产品知识/后台表格设计/img/2019-07-27-22-40-06.png" alt=""></p>
+<h2 id="UI"><a href="#UI" class="headerlink" title="UI"></a>UI</h2><h3 id="信息可视化"><a href="#信息可视化" class="headerlink" title="信息可视化"></a>信息可视化</h3><p>视觉元素能提高阅读速度。<br><img src="/2019/04/08/产品知识/后台表格设计/img/2019-07-27-22-40-40.png" alt=""></p>
+<ol>
+<li>状态显示。根据“7±2”原则，状态个数不能太多，不然人的记忆负担超负荷会适得其反。  </li>
+<li>告警显示。超出阈值需要突出显示，提醒用户超标。</li>
+<li>变动显示。比如同步环比的正负值。</li>
+<li>感受显示。有些表达用户的感官评价，用icon更符合用户的心智模型，比如“满意”用笑脸icon，“不满意”用苦脸icon，总比用文字阐述直观吧。</li>
+</ol>
+<h3 id="构建F型视觉流"><a href="#构建F型视觉流" class="headerlink" title="构建F型视觉流"></a>构建F型视觉流</h3><p>通过视觉重量和视觉方向的组合来引导用户查看信息的轨迹。</p>
+<p><img src="/2019/04/08/产品知识/后台表格设计/img/2019-07-27-22-41-07.png" alt=""></p>
+<ol>
+<li>突出表头。</li>
+<li>突出汇总信息。</li>
+<li>增加合适的对比度，区分行与行之间的数据。</li>
+</ol>
+<h3 id="打造页面呼吸感"><a href="#打造页面呼吸感" class="headerlink" title="打造页面呼吸感"></a>打造页面呼吸感</h3><p>有利于控制用户的阅读速度，做到张弛有度，好像正在“呼吸”。避免大量信息毫无差异的堆积，从而使用户在阅读时视觉疲劳。</p>
+<p><img src="/2019/04/08/产品知识/后台表格设计/img/2019-07-27-22-41-38.png" alt=""></p>
+<p>1.网格。通过物理实线割据内容。<br>优点：更加直观，节省空间。<br>缺点：物理割据显得不自然流畅。</p>
+<p>1）强调行。隐藏了纵向的线，不强调同列数据的上下对比，更加关注同条记录的阅读。<br>2）强调列。隐藏了横向的线，不强调同行数据的左右对比，更加关注同个属性的对比。<br>3）强调组。隐藏了同组的线，不强调同行和同列数据的对比，更加关注同组数据的对比。</p>
+<p>2.斑马线。通过填充底色割据内容。<br>优点：在大量数据的表格中可以引导用户的视觉。<br>缺点：在少量数据的表格中运用斑马线设计，用户可能会对高亮显示行产生困惑。  </p>
+<p>3.留白。通过加大留白区域割据内容。<br>优点：舒适自然，阅读流畅。<br>缺点：留白区域不好控制，太小达不到效果，太大浪费空间。  </p>
+<h3 id="消除视觉噪音"><a href="#消除视觉噪音" class="headerlink" title="消除视觉噪音"></a>消除视觉噪音</h3><p>用户在处理数据时已接收大量的信息，多余的视觉符号容易对用户造成干扰。</p>
+<p><img src="/2019/04/08/产品知识/后台表格设计/img/2019-07-27-22-42-22.png" alt=""></p>
+<ol>
+<li>避免不必要的视觉元素，无关的边框和底色。</li>
+<li>避免不必要的视觉效果，3D效果，阴影等酷炫效果。</li>
+</ol>
+<h2 id="复杂表格"><a href="#复杂表格" class="headerlink" title="复杂表格"></a>复杂表格</h2><h3 id="图表结合"><a href="#图表结合" class="headerlink" title="图表结合"></a>图表结合</h3><p><img src="/2019/04/08/产品知识/后台表格设计/img/2019-07-27-22-43-01.png" alt=""></p>
+<ol>
+<li>在表格内嵌入图表，可实现部分数据可视化。</li>
+<li>在表格旁增加图表，根据表格数据与图表联动。</li>
+</ol>
+<h3 id="交叉表"><a href="#交叉表" class="headerlink" title="交叉表"></a>交叉表</h3><p>交叉报表是报表当中常见的类型，属于基本的报表，是行、列方向都有分组的报表。</p>
+<p><img src="/2019/04/08/产品知识/后台表格设计/img/2019-07-27-22-43-20.png" alt=""></p>
+<p>在大多数产品中，我们见到的都是直联表（只在行方向有分组），基本可以满足大部分用户。交叉表出现的场景很少，复杂度极高，只要你的系统出现交叉表，很多规则要重新考虑。</p>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>表格的内容其实我才讲了一点点，只是给予各位一点启发，还有大多场景需要各位随机应变了，这里有几点想说的：</p>
+<p><strong>没有绝对的规范，只有相对的规范。</strong></p>
+<p>要适应自己产品的场景，选择最适合自己的规范。比如我的产品要考虑交叉表，然而制定对齐规范的文章作者从头到尾没讲到交叉表，我就要重新考虑这个规则的可用性。</p>
+<p><strong>没有完全的规范，只有基本的原则。</strong></p>
+<p>任何文章都不可能把所有的情况罗列出来，所以我们要理解规范背后的原则，推导出适应其他场景的规范，要知道很多事“万变不离其宗”。</p>
+<p><strong>没有组合的规范，只有总结的规范。</strong></p>
+<p>规范向来都是有理有据，比如“搜索和筛选”功能，很多人会将遇到的筛选的情况罗列出来作为类别，比如“时间筛选器+简易搜索”作为一类，下次遇到“时间筛选+下拉框”就分为一类，其实这是很片面的排列组合规范，而不是总结性的规范。</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ol>
+<li><a href="http://md.maxoxo.design/components/data-tables.html#data-tables-interaction" target="_blank" rel="noopener">http://md.maxoxo.design/components/data-tables.html#data-tables-interaction</a></li>
+<li><a href="https://design-nation.icons8.com/intro-to-data-tables-design-349f55861803" target="_blank" rel="noopener">https://design-nation.icons8.com/intro-to-data-tables-design-349f55861803</a></li>
+<li><a href="https://ux.shopify.com/lessons-from-building-mobile-friendly-accessible-data-tables-1e05c6924eaf" target="_blank" rel="noopener">https://ux.shopify.com/lessons-from-building-mobile-friendly-accessible-data-tables-1e05c6924eaf</a></li>
+<li><a href="https://ant.design/docs/pattern/table-cn" target="_blank" rel="noopener">https://ant.design/docs/pattern/table-cn</a></li>
+<li><a href="https://www.biaodianfu.com/guidelines-for-designing-tables.html" target="_blank" rel="noopener">https://www.biaodianfu.com/guidelines-for-designing-tables.html</a></li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>欣赏此文？求鼓励，求支持！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Song Liheng 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Song Liheng 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/产品/" rel="tag"># 产品</a>
+          
+            <a href="/tags/技能/" rel="tag"># 技能</a>
+          
+            <a href="/tags/后台/" rel="tag"># 后台</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/02/产品知识/后端产品日常总结/" rel="next" title="后端产品经理日常">
+                <i class="fa fa-chevron-left"></i> 后端产品经理日常
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/06/08/产品知识/数据清晰需要解决的问题/" rel="prev" title="数据清洗各类问题">
+                数据清洗各类问题 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/author.jpg" alt="Song Liheng">
+            
+              <p class="site-author-name" itemprop="name">Song Liheng</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#功能"><span class="nav-number">2.</span> <span class="nav-text">功能</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#添加数据"><span class="nav-number">2.1.</span> <span class="nav-text">添加数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#导出数据"><span class="nav-number">2.2.</span> <span class="nav-text">导出数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#显示字段。"><span class="nav-number">2.3.</span> <span class="nav-text">显示字段。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#搜索和筛选"><span class="nav-number">2.4.</span> <span class="nav-text">搜索和筛选</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#排序"><span class="nav-number">2.5.</span> <span class="nav-text">排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#汇总信息"><span class="nav-number">2.6.</span> <span class="nav-text">汇总信息</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#交互"><span class="nav-number">3.</span> <span class="nav-text">交互</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#固定行列"><span class="nav-number">3.1.</span> <span class="nav-text">固定行列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#批量操作"><span class="nav-number">3.2.</span> <span class="nav-text">批量操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看详情"><span class="nav-number">3.3.</span> <span class="nav-text">查看详情</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编辑"><span class="nav-number">3.4.</span> <span class="nav-text">编辑</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#反馈"><span class="nav-number">3.5.</span> <span class="nav-text">反馈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#精简表头"><span class="nav-number">3.6.</span> <span class="nav-text">精简表头</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#显示长内容"><span class="nav-number">3.7.</span> <span class="nav-text">显示长内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#空单元格"><span class="nav-number">3.8.</span> <span class="nav-text">空单元格</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据格式化"><span class="nav-number">3.9.</span> <span class="nav-text">数据格式化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对齐规范"><span class="nav-number">3.10.</span> <span class="nav-text">对齐规范</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UI"><span class="nav-number">4.</span> <span class="nav-text">UI</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#信息可视化"><span class="nav-number">4.1.</span> <span class="nav-text">信息可视化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#构建F型视觉流"><span class="nav-number">4.2.</span> <span class="nav-text">构建F型视觉流</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#打造页面呼吸感"><span class="nav-number">4.3.</span> <span class="nav-text">打造页面呼吸感</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#消除视觉噪音"><span class="nav-number">4.4.</span> <span class="nav-text">消除视觉噪音</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#复杂表格"><span class="nav-number">5.</span> <span class="nav-text">复杂表格</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#图表结合"><span class="nav-number">5.1.</span> <span class="nav-text">图表结合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#交叉表"><span class="nav-number">5.2.</span> <span class="nav-text">交叉表</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后记"><span class="nav-number">6.</span> <span class="nav-text">后记</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">7.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Song Liheng</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

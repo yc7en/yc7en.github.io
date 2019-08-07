@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="产品,技能,工作复盘,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="总结一下作为后端产品日常工作中一般遇到的主要问题:  业务流转，即工作流处理 各类配置 外部系统对接 统计报表 安全管控">
+<meta name="keywords" content="产品,技能,工作复盘">
+<meta property="og:type" content="article">
+<meta property="og:title" content="后端产品经理日常">
+<meta property="og:url" content="http://yoursite.com/2019/01/02/产品知识/后端产品日常总结/index.html">
+<meta property="og:site_name" content="笨鸟先飞">
+<meta property="og:description" content="总结一下作为后端产品日常工作中一般遇到的主要问题:  业务流转，即工作流处理 各类配置 外部系统对接 统计报表 安全管控">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-07-27T10:03:45.212Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="后端产品经理日常">
+<meta name="twitter:description" content="总结一下作为后端产品日常工作中一般遇到的主要问题:  业务流转，即工作流处理 各类配置 外部系统对接 统计报表 安全管控">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/01/02/产品知识/后端产品日常总结/">
+
+
+
+
+
+  <title>后端产品经理日常 | 笨鸟先飞</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">笨鸟先飞</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/02/产品知识/后端产品日常总结/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Song Liheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/author.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笨鸟先飞">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">后端产品经理日常</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-02T12:12:23+08:00">
+                2019-01-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>总结一下作为后端产品日常工作中一般遇到的主要问题:</p>
+<ul>
+<li>业务流转，即工作流处理</li>
+<li>各类配置</li>
+<li>外部系统对接</li>
+<li>统计报表</li>
+<li>安全管控</li>
+</ul>
+<a id="more"></a>
+<h2 id="1-业务流转-多节点效率配合"><a href="#1-业务流转-多节点效率配合" class="headerlink" title="1.业务流转 - 多节点效率配合"></a>1.业务流转 - 多节点效率配合</h2><p>业务流转的工作流处理是后端产品主要工作内容。业务需要在不同的操作者、模块、系统中流转，复杂的业务流转的梳理是产品经理一个最基础也是最重要的工作之一。产品经理需要认真考虑如何将业务拆分为必要的节点，并正确设计好节点之间的关系。保障不好业务流转，后台运营人员要骂娘加班，HR天天面临人力压力，技术天天手工写数据库。很多时候，除了技术之外，各角色之间的实际关系与作用也需要考虑在内。</p>
+<p>涉及到的内容包括:流程节点、操作内容、操作人员、前置条件、表单流转、数据权限。</p>
+<h2 id="2-管理配置-信息管理操作"><a href="#2-管理配置-信息管理操作" class="headerlink" title="2.管理配置 - 信息管理操作"></a>2.管理配置 - 信息管理操作</h2><p>管理后台需要对数据的标准化录入、导入、状态管理、数据修改等，通过后台操作影响前端的生成、展示、功能、活动、资源信息等。前端包括文字详情、活动页面、展示列表、价格参数等都是后台配置管理的范围。</p>
+<p>一般一个新功能的上线为了求快，一开始都是开发直接写在库里面，需要修改提脚本来修改。但随着系统关联度的上升，功能之间的相关影响，未经测试的改库操作是危险的。不仅影响运营操作效率，对业务产生影响，甚至可能带来生产事故。所以后台管理配置在后期运营中的必要性上升，需要一个优秀产品经理的把控。信息架构的合理安排可以减少开发的工作量，提升后台管理效率，优秀的交互安排，如批量修改信息的功能更是可以让运营如虎添翼。管理配置是否恰当有时可能关乎到一个产品运营的成败</p>
+<p>踩过不少坑，前期运营的一些需求赶着上线，配置就要求开发先写库。界面还没来得及做，下一波需求又来了，这些配置界面的工作，优先级感觉又没那么高，就往后让一让。产品配置的后端管理界面上线用了快3个月，这也是我一直匪夷所思的地方，之前每次修改都是经过我找开发刷数，几个月也不超过10条，结果上线后两个星期，我看修改和审批记录有160多条。他们每天都改了些什么…【惊恐】…</p>
+<h2 id="3-系统对接-内外数据交换"><a href="#3-系统对接-内外数据交换" class="headerlink" title="3.系统对接 - 内外数据交换"></a>3.系统对接 - 内外数据交换</h2><p>对接内部外部的不同系统，以各种形式API接口、SFTP等服务形式传输数据。产品经理需要认真考虑系统与系统之间的关系，以及数据之间的同步和调用方式。与外部合作盘活生态是开放的互联网必不可少的一部分。如果产品涉及业务够复杂或是老板谈下的合作项目越大，就有越多的精力花在对接的梳理上。</p>
+<p>数据格式上：</p>
+<ul>
+<li>XML:银行系基本都是XML对接</li>
+<li>JSON:网商全是JSON、</li>
+<li>加密: 人行的是加密报文,东华系的产品应该受人行系统的影响比较大，也是txt再加密</li>
+</ul>
+<p>最突出的问题:数据一致性问题。人行的延迟未更新、小贷要求的财务数据和业务数据一致性、网商的除了退汇还算好。</p>
+<ul>
+<li>反馈: 读取反馈报文。一般场景可行，部分场景基本，外围系统不是自己系统，部分存在BUG，</li>
+<li>监控: 数据发生不一致时报警排查，如在发生报送状态不一致的临时解决问题的最快途径，个人认为可以治标不能治本。</li>
+<li>入库管控: 数据在入库前完成校验，规避垃圾数据的根本方案。最近在看阿里的数据中台实践，感觉我们当前还有一段路要走。</li>
+</ul>
+<h2 id="4-统计分析-业务价值挖掘"><a href="#4-统计分析-业务价值挖掘" class="headerlink" title="4.统计分析 - 业务价值挖掘"></a>4.统计分析 - 业务价值挖掘</h2><p>简单来讲就是将业务复杂的过程进行数据化的监控。数据埋点、数据收集、数据清洗、数据挖掘、数据建模、数据可视化，也衍生出了一个专门的热门title，数据产品经理。预计未来需要对整个业务报表块进行重整，数据中心未来转型为数字风控团队，预计报表需求还是会挪到我们来做。</p>
+<h2 id="5-算法策略-数据转化输出"><a href="#5-算法策略-数据转化输出" class="headerlink" title="5.算法策略 - 数据转化输出"></a>5.算法策略 - 数据转化输出</h2><p>“增删查改显算传”七字要诀中的”算“。薪酬如何计算、有宽限期等额本息还款计划到底如何生成、资金方业务规则、阶梯利率定价规则、客户经理的管护关系如何处理，每天面对的弹窗弹什么内容出来。目前提出的科技赋能，如何赋能？算法、规则、策略基本是日常。</p>
+<h2 id="6-安全管控-数据保护"><a href="#6-安全管控-数据保护" class="headerlink" title="6.安全管控 - 数据保护"></a>6.安全管控 - 数据保护</h2><p>”权“”责“清晰，包括每个业务部门的操作权限、数据权限，需要对整个后台系统进行管理，保障合适的人接触和使用到合适的功能及数据，同时保证不要被一些弱智的设计导致数据错乱、误操作及安全泄露。这部分工作包括:</p>
+<ul>
+<li>账号管理</li>
+<li>权限设计</li>
+<li>流程控制</li>
+<li>操作留痕</li>
+<li>防呆设计</li>
+<li>备份同步</li>
+</ul>
+<p>都属于从安全可控角度考虑的范围。有些时候业务会涉及到资质类，比如培训中心会对合格的客户经理办法证书，具有一定的资质可以发放更多的贷款，实际也是权限范畴。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>欣赏此文？求鼓励，求支持！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Song Liheng 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Song Liheng 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/产品/" rel="tag"># 产品</a>
+          
+            <a href="/tags/技能/" rel="tag"># 技能</a>
+          
+            <a href="/tags/工作复盘/" rel="tag"># 工作复盘</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/02/产品知识/权限管理/" rel="next" title="权限管理：带着枷锁跳舞">
+                <i class="fa fa-chevron-left"></i> 权限管理：带着枷锁跳舞
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/08/产品知识/后台表格设计/" rel="prev" title="后台数据表格设计">
+                后台数据表格设计 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/author.jpg" alt="Song Liheng">
+            
+              <p class="site-author-name" itemprop="name">Song Liheng</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-业务流转-多节点效率配合"><span class="nav-number">1.</span> <span class="nav-text">1.业务流转 - 多节点效率配合</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-管理配置-信息管理操作"><span class="nav-number">2.</span> <span class="nav-text">2.管理配置 - 信息管理操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-系统对接-内外数据交换"><span class="nav-number">3.</span> <span class="nav-text">3.系统对接 - 内外数据交换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-统计分析-业务价值挖掘"><span class="nav-number">4.</span> <span class="nav-text">4.统计分析 - 业务价值挖掘</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-算法策略-数据转化输出"><span class="nav-number">5.</span> <span class="nav-text">5.算法策略 - 数据转化输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-安全管控-数据保护"><span class="nav-number">6.</span> <span class="nav-text">6.安全管控 - 数据保护</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Song Liheng</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

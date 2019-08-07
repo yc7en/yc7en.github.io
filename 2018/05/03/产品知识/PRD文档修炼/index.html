@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="产品,技能,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="写PRD时，你是否曾经做过以下的事：  从公司研发规范文档中下载模版，进行内容填写； 当不了解章节的内容时，直接写略或者删掉； 在网上找到相似产品的PRD，对文章内容进行替换。">
+<meta name="keywords" content="产品,技能">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PRD修炼">
+<meta property="og:url" content="http://yoursite.com/2018/05/03/产品知识/PRD文档修炼/index.html">
+<meta property="og:site_name" content="笨鸟先飞">
+<meta property="og:description" content="写PRD时，你是否曾经做过以下的事：  从公司研发规范文档中下载模版，进行内容填写； 当不了解章节的内容时，直接写略或者删掉； 在网上找到相似产品的PRD，对文章内容进行替换。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://ppdnya68j.bkt.clouddn.com/img28D9669A988940369325621EFC9CDADF.png">
+<meta property="og:image" content="http://ppdnya68j.bkt.clouddn.com/img06699C975B8E44D0A193880DD2AE3004.png">
+<meta property="og:image" content="http://ppdnya68j.bkt.clouddn.com/imgAC051818EE894CDD976C368AC97FAAAB.png">
+<meta property="og:image" content="http://ppdnya68j.bkt.clouddn.com/imgB5B86E1658E74972B9321368CE09B407.png">
+<meta property="og:image" content="http://ppdnya68j.bkt.clouddn.com/imgAAC8711090F64992B07EB1600B80BF33.png">
+<meta property="og:image" content="http://ppdnya68j.bkt.clouddn.com/img3487B9E954F44D179DDB67308532E0BE.png">
+<meta property="og:image" content="http://ppdnya68j.bkt.clouddn.com/imgB4653E89B6724B41B03CE44D059C7EBF.png">
+<meta property="og:image" content="http://ppdnya68j.bkt.clouddn.com/img3FE6971EE2AC451E84623B95ABAF6ABA.png">
+<meta property="og:image" content="http://ppdnya68j.bkt.clouddn.com/imgFC044C9896834228AE59EECD9B3582DC.png">
+<meta property="og:image" content="http://ppdnya68j.bkt.clouddn.com/imgB0B2D229F4E3412CA24605087C1CF13A.png">
+<meta property="og:image" content="http://ppdnya68j.bkt.clouddn.com/img5C45526DFB1145A3989858DE66AE819B.png">
+<meta property="og:image" content="http://ppdnya68j.bkt.clouddn.com/img36F62444274F4CCA8FA32AC9439D3B70.png">
+<meta property="og:image" content="http://ppdnya68j.bkt.clouddn.com/img1FE5096791EC46F39F286B6ACBA0D2E6.png">
+<meta property="og:image" content="http://ppdnya68j.bkt.clouddn.com/img258251A55D6A4D6C9C97E4B33AD8EBF7.png">
+<meta property="og:image" content="http://ppdnya68j.bkt.clouddn.com/img5F2902CC1BF54571BE5E844785CC8738.png">
+<meta property="og:image" content="http://ppdnya68j.bkt.clouddn.com/img2B53B3B0CC114863A41C29D54331F04A.png">
+<meta property="og:image" content="http://ppdnya68j.bkt.clouddn.com/imgAC051818EE894CDD976C368AC97FAAAB.png">
+<meta property="og:image" content="http://ppdnya68j.bkt.clouddn.com/img06699C975B8E44D0A193880DD2AE3004.png">
+<meta property="og:updated_time" content="2019-07-27T10:01:59.456Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PRD修炼">
+<meta name="twitter:description" content="写PRD时，你是否曾经做过以下的事：  从公司研发规范文档中下载模版，进行内容填写； 当不了解章节的内容时，直接写略或者删掉； 在网上找到相似产品的PRD，对文章内容进行替换。">
+<meta name="twitter:image" content="http://ppdnya68j.bkt.clouddn.com/img28D9669A988940369325621EFC9CDADF.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/05/03/产品知识/PRD文档修炼/">
+
+
+
+
+
+  <title>PRD修炼 | 笨鸟先飞</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">笨鸟先飞</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/03/产品知识/PRD文档修炼/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Song Liheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/author.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笨鸟先飞">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">PRD修炼</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-03T13:27:25+08:00">
+                2018-05-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>写PRD时，你是否曾经做过以下的事：</p>
+<ul>
+<li>从公司研发规范文档中下载模版，进行内容填写；</li>
+<li>当不了解章节的内容时，直接写略或者删掉；</li>
+<li>在网上找到相似产品的PRD，对文章内容进行替换。</li>
+</ul>
+<a id="more"></a>
+<p>前几年我所在公司刚转型的时候，PRD管理比较混乱，很多产品经理常常使用上一个迭代，或者其它产品团队的PRD模版。把其中的内容进行替换，自作主张的删减，严重者只剩下“产品功能”这一部分。导致了很多需求要么没有可读性，要么又臭又长，甚至需求遗失，团队沟通成本极高，项目延期率居高不下。</p>
+<p>这与其说是产品的偷懒行为，不如说是对PRD的理解不够，不得其法。</p>
+<h1 id="PRD的定位"><a href="#PRD的定位" class="headerlink" title="PRD的定位"></a>PRD的定位</h1><p>我们知道，PRD是MRD的技术量化版，可以指导产品实现，是承上启下的重要文档。因此在产品实现过程中，PRD的重要性不言而喻。因此好的PRD文档，无论格式和内容如何演变，一体式也好，word也好，以下两个问题必定是明确的：</p>
+<blockquote>
+<ul>
+<li>在产品实现过程中，谁会看这个PRD；</li>
+<li>PRD是否具备所有读者需要的内容。</li>
+</ul>
+</blockquote>
+<p>所以，PRD的内容需要根据产品形态，项目组织形式等情况，做相应的调整。通常情况下，读者包含但不仅限于以下角色：产品总监、研发、UI、测试、相关产品团队（含硬件团队）、运营、客服。</p>
+<p>PRD的结构</p>
+<p>互联网敏捷团队，轻文档，重过程，对PRD形式没有特殊要求，最重要的是要合适你的团队，大公司的模版不一定适用小公司，小公司模版也不一定适合大公司。有得的队研发强，有的团队测试强，有的团队运维强，PRD要有所侧重；有得团队经过长期磨合，一个眼神，就知道你的隐性需求，PRD当然可以不写，但是你给别的团队用，可能要解释半天甚至返工。在团队磨合过程中，要形成恰当的PRD，需要对PRD的理解上有了一定的功底，才能写出最合适的PRD。</p>
+<p>因此，本系列文章的宗旨是让大家从源头上理解PRD每个章节的内容，对内容的表达可以创新，但万变不离其宗。</p>
+<p>整体概览如下，后面会对每个章节分解说明：</p>
+<p><img src="http://ppdnya68j.bkt.clouddn.com/img28D9669A988940369325621EFC9CDADF.png" alt=""> </p>
+<h1 id="基本结构"><a href="#基本结构" class="headerlink" title="基本结构"></a>基本结构</h1><p>先从简单的说起，很多只重视“产品功能”的描述，对其它信息不重视，这是一种误区，特别是文档本身的基本信息。当文档涉及到跨项目，跨部门，跨公司，跨集团时，这些内容是很重要的。</p>
+<h3 id="封面"><a href="#封面" class="headerlink" title="封面"></a>封面</h3><p>这部分是需求的门面，一定程度上可以展示公司和团队形象。</p>
+<blockquote>
+<ul>
+<li>公司信息：包含但不仅限于logo，名称，传真等，一方面提升公司形象，一方面便于联系</li>
+<li>保密级别：公开，普通，机密，绝密等，在一些游戏产品或涉及公司重大战略的产品，保密很重要。这同时也是一种免责声明。</li>
+<li>文档名称：xx项目/产品 PRD，我见到不止一次，A项目的文档写着B项目的文档名称。</li>
+<li>文档编号：如果公司有要求则按公司要求，无要求则根据产品体系自行填写，文件名最好带上文档编号。</li>
+<li>文档编写人：编写人信息，包含部门， 姓名等，代表的是一种责任。</li>
+<li>编写时间：一般为重要文档版本对外发布时间。</li>
+</ul>
+</blockquote>
+<h3 id="版本信息"><a href="#版本信息" class="headerlink" title="版本信息"></a>版本信息</h3><p>又叫修改控制纪录，这部分就像软件的更新说明一样，表明文档与上个版本有什么区别。</p>
+<p><img src="http://ppdnya68j.bkt.clouddn.com/img06699C975B8E44D0A193880DD2AE3004.png" alt=""></p>
+<blockquote>
+<ul>
+<li>日期：版本的修改时间；</li>
+<li>版本：文档版本号，结构与产品版本号类似；</li>
+<li>版本描述：修订xx章节，新增xx章节，删除xx内容，让读者对文档变更内容有个大致了解；</li>
+<li>版本作者：该版本的编写人，便于沟通；</li>
+<li>审核人、批准人：根据实际项目变更委员会的组成情况，确定是否需要。</li>
+</ul>
+</blockquote>
+<h3 id="编制说明"><a href="#编制说明" class="headerlink" title="编制说明"></a>编制说明</h3><p>一般情况下PRD文档都省略或合并了这个部分。我曾经参与过一个国家级的项目，当时由多个公司，n多专家共同编写，历时几个月，产品文档共有10个分册，十本纸质的加起来将近有30公分厚。编制说明用于说明文档编制的情况，互联网提倡小而美，快速落地mvp，不会有那么大的需求，所以大家会在背景或概要描述时顺便提一句。</p>
+<blockquote>
+<ul>
+<li>编制来源：描述因何进行编写文档。如：因什么政策，有xx公司牵头，xx公司参与，以什么为目标，展开本次工作。</li>
+<li>编制过程：描述文档编制的过程。如：x日成立工作组，x日组织了研讨，x日组织专家分析，x日正式启动编写。</li>
+<li>文档体系结构：用于描述本项目或产品涉及所有文档，如：xx综述分册，xx业务模型分册，xx需求规格分册，xx数据模型分册等。</li>
+<li>编制说明：用于描述当前文档的定位和边界，如：本文档负责是承接并叙述xx相关成果内容，起草单位：xxx。</li>
+</ul>
+</blockquote>
+<h3 id="目录和正文"><a href="#目录和正文" class="headerlink" title="目录和正文"></a>目录和正文</h3><p>目录：在修订文档后，更新域即可。一般情况下用不到目录，定位段落的时候用文档结构图比较方便。但是如果需要打印成纸质的项目，目录就必不可少了。</p>
+<p>正文：PRD的主体。一般包含引言，概述，功能需求，非功能需求，环境。PRD的功力深浅，就在这体现了。</p>
+<h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><p>引言即文档开头，是PRD正文部分的开始部分。其作用是提供辅助读者深入理解整个文档所需的其它相关信息</p>
+<p><img src="http://ppdnya68j.bkt.clouddn.com/imgAC051818EE894CDD976C368AC97FAAAB.png" alt=""></p>
+<h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>描述所说明的软件的应用，尽可能精确地描述所有相关的利益干系人。</p>
+<blockquote>
+<ul>
+<li>软件／产品名称：待开发软件/产品名称；</li>
+<li>提出者、开发者、用户：明确产品干系人；</li>
+<li>例子：xx产品，是由xxx与xxx合作项目，由xxx提出，由xxx承担开发人物，目前用户为xx项目的车主。</li>
+</ul>
+</blockquote>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><p>列出有关资料的名称、文件编号、发表日期、出版单位、作者等，并说明参考文件的来源。</p>
+<p>包含但不仅限于：</p>
+<blockquote>
+<ul>
+<li>经过核准的任务计划书</li>
+<li>上级机关批文</li>
+<li>项目相关的合同</li>
+<li>本项目其它已发表的文件，如：MRD、原型</li>
+<li>文中引用的其它文件、研发规范等</li>
+</ul>
+</blockquote>
+<h3 id="术语"><a href="#术语" class="headerlink" title="术语"></a>术语</h3><p>列出本文件中用到的专业术语的定义和缩略语对照，便于理解，适用于接触新业务领域的团队。</p>
+<h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>如果说引言是帮助读者理解文档，那么概述则是帮助读者理解项目和产品本身。</p>
+<h3 id="项目／产品描述"><a href="#项目／产品描述" class="headerlink" title="项目／产品描述"></a>项目／产品描述</h3><p>叙述该项软件／产品应用目标、作用范围以及其他应向读者说明的有关该软件开发的背景材料。</p>
+<blockquote>
+<ul>
+<li>应用目标：可以理解为产品要解决什么问题，如：针对xx状态下，无法进行xxx的情况，使xx产品可以通过xxx完成对xxx的工作开展。</li>
+<li>范围：明确产品边界，说明产品将干什么，不干什么。</li>
+<li>开发背景：为何要开发这个产品，一般情况下根据团队理解程度，节选BRD、MRD相关调研背景资料。</li>
+</ul>
+</blockquote>
+<p>建议平时多与团队沟通探讨，不要把评审当做一种宣贯。</p>
+<h3 id="系统模型"><a href="#系统模型" class="headerlink" title="系统模型"></a>系统模型</h3><p>用于帮助读者理解系统整体结构，常用于向上汇报，帮助理解系统整体运作。</p>
+<p>（1）系统总体结构图</p>
+<p>产品涉及的系统整体所处环境分解关系、各层次作用以及数据传递关系，便于理解各系统之间如何配合工作，各自边界是什么。</p>
+<p><img src="http://ppdnya68j.bkt.clouddn.com/imgB5B86E1658E74972B9321368CE09B407.png" alt=""></p>
+<p>（2）网络拓扑结构图</p>
+<p>系统所处的网络环境，用于理解各系统部署情况。帮助读者理解集群，负载，网络安全等相关信息，便于产品设计和相关决策。</p>
+<p>这部分要求产品需要具备一定的技术能力。</p>
+<p><img src="http://ppdnya68j.bkt.clouddn.com/imgAAC8711090F64992B07EB1600B80BF33.png" alt=""></p>
+<h3 id="假设和约束"><a href="#假设和约束" class="headerlink" title="假设和约束"></a>假设和约束</h3><p>指的是产品在实现过程中，必须满足的假设条件和所受的限制。这部分是被大家删减最多的部分。</p>
+<p>（1）约束</p>
+<p>这个比较好理解，就是影响产品的一些限制，比如：</p>
+<blockquote>
+<ul>
+<li>必须兼容的相关系统或硬件</li>
+<li>必须使用的语言，技术，或者通信协议，如java，dubbo，nginx，灰度，xmpp</li>
+<li>必须控制的成本，安全要求，保密要求。</li>
+<li>必须满足的完成时间，比如xx节日之前。</li>
+</ul>
+</blockquote>
+<p>（2）假设</p>
+<p>总有一些因素，不是产品的约束，但它们的改变可能影响到需求，比如：</p>
+<blockquote>
+<ul>
+<li>最终获取的经费预算满足xx条件</li>
+<li>某某技术的成熟度满足xx条件</li>
+<li>公司xx资源满足xx条件</li>
+<li>市场部或运营部具有xx能力</li>
+</ul>
+</blockquote>
+<p>常见的运营需求也算是一种对运营的假设行为，此部分一方面有助于理解产品所需的资源，便于推进相关任务的进行，另一方面便于研发人员思考相关约束，减少后期返工和修改。</p>
+<h1 id="功能需求"><a href="#功能需求" class="headerlink" title="功能需求"></a>功能需求</h1><p>功能需求是PRD核心内容，前面说引言是帮助理解文档本身，概述帮助理解项目和产品本身，那么功能需求部分就是帮助理解业务和功能。下面对功能需求的各部分内容进行详细说明。</p>
+<p><img src="http://ppdnya68j.bkt.clouddn.com/img3487B9E954F44D179DDB67308532E0BE.png" alt=""></p>
+<h2 id="概要功能需求"><a href="#概要功能需求" class="headerlink" title="概要功能需求"></a>概要功能需求</h2><p>概要功能需求是用于描述提供给用户的产品特性和功能。通常使用框图、表、文字结合的方式说明，便于快速理解。</p>
+<h3 id="业务需求"><a href="#业务需求" class="headerlink" title="业务需求"></a>业务需求</h3><p>帮助理解产品的业务需求和内容</p>
+<p>产品描述：总整体上解释和描述产品定位，产品目标。如，该产品是一款专注于xxx的平台，A业务解决用户xxx的问题，B业务解决运营xxx的问题。</p>
+<p>个人认为，PRD中业务需求粒度不宜过细，毕竟PRD是偏向于可量化指标，以指导设计为主。但有的时候，产品MRD、PRD会合并成同一个文档。这种情况下，可以在产品描述中，展开MRD相关内容，如市场分析，用户分析，竞品分析，可行性结论等。</p>
+<p>概要功能列表：列出文档涉及的功能列表清单</p>
+<p>  ● 需求编号常见于大型后台系统，便于查找。<br>  ● 需求分析可以描述该需求内因，外因，kano等级，紧急程度等，便于快速了解。<br>  ● 优先级指导先后顺序，可用与火车头发布模式。</p>
+<p><img src="http://ppdnya68j.bkt.clouddn.com/imgB4653E89B6724B41B03CE44D059C7EBF.png" alt=""></p>
+<p>我见过很多需求文档中，优先级设定没有规则。我个人优先级顺序原则是:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1. 产品可用性的需求</span><br><span class="line">2. 产品用户体验性需求</span><br><span class="line">3. 产品扩展性需求</span><br><span class="line">4. 产品生态需求</span><br></pre></td></tr></table></figure>
+<h3 id="产品结构图"><a href="#产品结构图" class="headerlink" title="产品结构图"></a>产品结构图</h3><p>帮助了解产品功能和总体形态的概貌。</p>
+<p>全局功能结构：表达这个产品整体的功能层次和逻辑关系，通常用脑图来表达。</p>
+<p><img src="http://ppdnya68j.bkt.clouddn.com/img3FE6971EE2AC451E84623B95ABAF6ABA.png" alt=""></p>
+<p>页面结构图：以页面为基准，描述产品各页面的层次结构，常用于移动端产品，可用结构图表达。</p>
+<p><img src="http://ppdnya68j.bkt.clouddn.com/imgFC044C9896834228AE59EECD9B3582DC.png" alt=""></p>
+<p>利用墨刀等原型工具，可以通过创建页面工作流快速完成。</p>
+<h3 id="业务流程"><a href="#业务流程" class="headerlink" title="业务流程"></a>业务流程</h3><p>帮助理解产品的业务关系和流程。</p>
+<p>产品用例图：以不同的用户或角色为基点，通过用例，表达用户会使用的功能边界，常见于后台系统。</p>
+<p><img src="http://ppdnya68j.bkt.clouddn.com/imgB0B2D229F4E3412CA24605087C1CF13A.png" alt=""></p>
+<p>整体流程图：用于描述某个整体任务时，各模块之间的配合关系，常见于后台系统。</p>
+<p><img src="http://ppdnya68j.bkt.clouddn.com/img5C45526DFB1145A3989858DE66AE819B.png" alt=""></p>
+<p>全局数据流：用于描述纪录或表单等信息的流转关系或层次结构，常用于后台系统。</p>
+<p><img src="http://ppdnya68j.bkt.clouddn.com/img36F62444274F4CCA8FA32AC9439D3B70.png" alt=""></p>
+<p>根据产品类型，选择需要的表达模型去构建PRD。</p>
+<h2 id="详细功能需求"><a href="#详细功能需求" class="headerlink" title="详细功能需求"></a>详细功能需求</h2><p>这部分大家应该都不陌生，是PRD核心中的核心，用于描述功能的量化指标，是研发部门关注的重点。</p>
+<p>对于详细功能，我把它分为两种类型，一种是业务功能，一种是报表功能。根据不同的类型，结构有所不同。</p>
+<h3 id="业务功能"><a href="#业务功能" class="headerlink" title="业务功能"></a>业务功能</h3><h4 id="功能名称"><a href="#功能名称" class="headerlink" title="功能名称"></a>功能名称</h4><p>一般直接使用功能名称作为标题项，便于生成目录和在文档结构图中快速定位。一个story一个小节</p>
+<p>概述：</p>
+<p>包含功能的一般性描述，包含以下几点内容</p>
+<p>需求描述：推荐一个一句话描述需求的模版给大家“xxx（角色）在xxx的情况下，通过xxx的方式，达到xxx的目的”。</p>
+<p>业务场景：描述用户的使用场景，可以用拟人化的语言去表达，如：“小王到达A写字楼后，停车场管理员告知车位已满，小王扫扫描车位二维码，寻找附近的空闲停车场。”</p>
+<p>参与者：表述此功能具体使用人有哪些，如某功能是管理员使用还是员工使用。</p>
+<h4 id="业务流程-1"><a href="#业务流程-1" class="headerlink" title="业务流程"></a>业务流程</h4><p>详细描述次业务涉及的主要事件流程，可通过流程图辅助说明<br>  ● 前置条件：在开始前，系统可检测的有意义的条件。如：意见反馈查询功能中，用户已提交意见反馈<br>  ● 触发事件：触发次系统功能的事件。如：用户点击、收到通知<br>  ● 基本事件流：常规，正常情况下的预期事件流。如：1、点击xxx进入页面，2、输入xxx，3、选择xxx，4、点击确定保存xxx。可以通过流程图辅助说明。<br><img src="http://ppdnya68j.bkt.clouddn.com/img1FE5096791EC46F39F286B6ACBA0D2E6.png" alt=""></p>
+<p>  ● 扩展事件流：备选，可选事件流。如：1、可通过点击｛导出｝，进入导出流程。<br>  ● 异常事件流：异常情况下事件流。如：空状态下，服务异常时的事件流。<br>  ● 后置条件：在结束后，系统可检测的有意义的条件。如：1、保存后，界面数据更新。</p>
+<h4 id="相关功能"><a href="#相关功能" class="headerlink" title="相关功能"></a>相关功能</h4><p>与本功能相关，但较复杂，难以一起表达时，拆分到细分场景后所关联的功能。可以描述出它们直接的输入输出关系。</p>
+<h4 id="界面原型"><a href="#界面原型" class="headerlink" title="界面原型"></a>界面原型</h4><p>原型截图或者链接至原型文档。</p>
+<p><img src="http://ppdnya68j.bkt.clouddn.com/img258251A55D6A4D6C9C97E4B33AD8EBF7.png" alt=""></p>
+<p>另外，有必要时，需要说明界面中数据项的详细描述.</p>
+<p><img src="http://ppdnya68j.bkt.clouddn.com/img5F2902CC1BF54571BE5E844785CC8738.png" alt=""></p>
+<h4 id="业务规则"><a href="#业务规则" class="headerlink" title="业务规则"></a>业务规则</h4><p>针对此功能或某个数据相的业务规则描述，如果在业务流程中描述过，不需要重复描述。</p>
+<p>例如：钱包余额不足时，可转为刷银行卡支付。</p>
+<h4 id="设计约束"><a href="#设计约束" class="headerlink" title="设计约束"></a>设计约束</h4><p>描述需要设计、开发特别注意的事项。如：没有说明的抽象框架设计；可兼容某些特性；不可用状态时的显示要求。</p>
+<p>如果是公共性的约束，可以通过全局说明，来阐述通用约束。如：对话框样式，加载样式等</p>
+<h4 id="验收标准"><a href="#验收标准" class="headerlink" title="验收标准"></a>验收标准</h4><p>描述产品验收时要满足的内容，是测试人员重点关注事项。</p>
+<p>原则上优先保证正常流下的业务结果正确，异常边界不报错，提示明确即可。</p>
+<p>如：能够注册成功，失败原因提示正确。</p>
+<h4 id="报表功能"><a href="#报表功能" class="headerlink" title="报表功能"></a>报表功能</h4><h5 id="功能名称-1"><a href="#功能名称-1" class="headerlink" title="功能名称"></a>功能名称</h5><p>一般直接使用报表名称作为标题项，便于生成目录和在文档结构图中快速定位。如：某某报表，编写时一个报表一个小节。</p>
+<p>概述</p>
+<p>因报表一般情况下的用户是管理者，因此报表类功能概述主要便于理解业务场景和管理者意图和目的<br>  ● 目的：管理者因为什么需要查看此报表<br>  ● 使用部门／职位：用于理解使用者的职责，包括地理级别，如：xx财务经理岗位，省级/市级。<br>  ● 相关场景与评率：大概多久查一次，纬度有多大。</p>
+<h5 id="报表内容"><a href="#报表内容" class="headerlink" title="报表内容"></a>报表内容</h5><p>详细描述报表各项数据的来源和计算规则。<br>  ● 数据来源：该数据项的基于哪些数据生成。如：消费金额统计，来源于xx订单纪录<br>  ● 计算规则：该数据的统计公式。如：消费金额统计，xx订单中“实收”的累加总额。</p>
+<h5 id="界面原型-1"><a href="#界面原型-1" class="headerlink" title="界面原型"></a>界面原型</h5><p>报表展示原型。个人建议报表原型最好模拟一些真实数据和用户确认最终效果。</p>
+<h5 id="报表框架"><a href="#报表框架" class="headerlink" title="报表框架"></a>报表框架</h5><p>描述报表模块的通用框架需求，如：打印，打印预览，导出，总计，排序，默认纬度，筛选条件，分页，是否支持动态报表模版等</p>
+<p>设计约束、验收标准</p>
+<h5 id="与业务功能相同，这里不再重复说明。"><a href="#与业务功能相同，这里不再重复说明。" class="headerlink" title="与业务功能相同，这里不再重复说明。"></a>与业务功能相同，这里不再重复说明。</h5><h5 id="数据字典"><a href="#数据字典" class="headerlink" title="数据字典"></a>数据字典</h5><p>列出有关功能的数据元素，或信息结构。若原型部分已经描述过，可以省略。</p>
+<h1 id="非功能需求"><a href="#非功能需求" class="headerlink" title="非功能需求"></a>非功能需求</h1><p>非功能需求是功能需求的有效补充，帮助文档理解产品在功能以外的相关要求。</p>
+<p>下面对非功能需求的各部分内容进行详细说明：</p>
+<p><img src="http://ppdnya68j.bkt.clouddn.com/img2B53B3B0CC114863A41C29D54331F04A.png" alt=""></p>
+<p>接口需求</p>
+<p>包含面对不同主体，产品对外提供的接口要求，以供各主体使用。</p>
+<p>1.用户接口</p>
+<p>提供用户使用软件产品是的接口需求，一般情况下，当用户有特殊要求时再体现。例如：<br>  ● 屏幕格式：用户使用产品时对屏幕需求。如屏幕尺寸、分辨率、设备型号。<br>  ● 交互格式：用户对交互的需求，如菜单的格式和内容。<br>  ● 报表格式：用户对报表页面的需求，如打印格式、内容、时间要求。<br>  ● 文件格式：用户对产品相关文件的需求，如文件类型、文件大小、文件数量。<br>2.硬件接口</p>
+<p>提供软件产品和系统硬部件之间每个接口的逻辑特点。例如：<br>  ● 信息传递方式：可以包括通信协议，协议格式的要求，如蓝牙、串口、网线、socke。<br>  ● 响应时间：对硬件响应时间的需求。<br>  ● 精度要求：对信息交互精度的要求。如时间误差、计步器步数误差、陀螺仪误差等。<br>3.软件接口</p>
+<p>提供使用其它软件产品或系统之家的接口，如数据接口，中间件接口等。软件接口中应说明接口版本、来源，软件产品使用接口的目的、内容和格式等：<br>  ● 使用者：描述接口使用者的相关信息，包含使用者名称、业务目的、使用时机、使用频率。<br>  ● 内容与格式：描述数据交互过程，以及数据项的内容和格式。与功能需求中的数据项描述类似。<br>  ● 设计约束：软件接口在设计、开发时所需特别注意的事项。此部分与功能需求中设计约束类似，但这里偏向于体现软件产品间特殊的约束。<br>4.通信接口</p>
+<p>提供可用于通信的接口，如果产品涉及对外通信组件，应说明通信相关接口，如局部网络的协议。</p>
+<p>数据需求</p>
+<p>此部分包含对数据库、数据库文件、数据集等进行规定。可能包括数据使用频率、存取能力、数据备份、数据档案、数据保存等要求。分别从数据采集、数据影响和数据管理几个方面来说明：</p>
+<p>(1).数据采集：描述用户必须要采集的相关数据，对于每个数据可以说明下面的内容<br>  ● 数据来源：数据的输入源，例如数据是通过操作产生，还是通过第三方抓取的<br>  ● 输入输出设备：对数据输入和输出的设备的要求，如步数的输入设备可能是手机，手表，手环等。<br>  ● 输入输出格式：数据输入和输出的格式要求，可以同时说明传递的放肆好<br>  ● 换算公式：当需要对采集的数据进行运算或者公式转换时，应说明相关公式。<br>(2).数据的影响：描述该数据对系统的影响，例如当采集不到此数据时，是否需要做相应的降级处理。</p>
+<p>(3).数据的管理能力：描述数据的管理要求，主要目的是可以根据可预见的增长对数据的存储要求作出估算</p>
+<p>操作</p>
+<p>用于说明和业务相关的用户要求的一些操作，这部分内容有时是用户接口的一部分：<br>  ● 常规操作：包含复制、清空、重置、全选等常见操作。<br>  ● 特殊操作：它可以是一些不通过产品本身，但对产品有影响的操作。如对产品的安装、备份和恢复等有特殊要求的操作。<br>性能需求</p>
+<p>描述产品交互过程中的数值需求，这部分的要求是可以度量的具体指标。例如：可支持的终端数量、TPS数量、响应时间等。</p>
+<p>1.精度</p>
+<p>说明输入输出的数据精度要求，包括传输过程中的精度。此部分若已经提及，可以省略</p>
+<p>2.时间特性要求</p>
+<p>说明对该产品的时间特性要求，常见的有：<br>  ● 响应时间：执行某个动作最大响应时间，按移动互联网的要求，3秒是极限，一般都要求500ms以内。<br>  ● 更新处理时间：例如任务执行后，任务状态同步时间。<br>  ● 传送时间：例如任务执行后，数据同步到各业务系统的时间。<br>根据产品形态进行定义。</p>
+<p>3.灵活性</p>
+<p>说明当需求发生变化时，该产品对这些变化的适应能力：<br>  ● 操作方式上的变化：例如当产品从鼠标按键到触摸方式时。<br>  ● 运行环境的变化：例如当环境温度超出正常温度范围时。<br>  ● 其它软件接口的变化：例如当其它软件失控时。常见与api产品中的降级处理。<br>  ● 精度和有效时限变化：例如当接入数据无法达到产品要求时。<br>当对某功能不理解时，可以在功能需求中提及，此部分是为了满足性能需求中的灵活性而设计。</p>
+<p>属性</p>
+<p>描述产品的相关属性要求，可以从安全性、可维护性、可用性进行描述。</p>
+<p><strong>1.安全性</strong></p>
+<p>指用户对于保护产品提出的特殊需求要素，例如数据安全，防止他人非法使用等。<br>  ● 密码技术：对密码的安全要求进行描述，银行应用和普通应用对密码的要求肯定不一样。<br>  ● 权限：控制产品的使用权限。<br>  ● 容灾：对不可抗因素和灾难发生时，产品的适应能力。如断电或遭到攻击时。<br>  ● 备份：对数据的备份能力。</p>
+<p><strong>2.可维护性</strong></p>
+<p>描述用户对产品的维护需求，便于用户进行扩展：<br>  ● 低耦合：产品的可分割，可组合性。<br>  ● 热插拔：产品可不断电进行各种功能。<br>  ● 热更新：产品可不重新下载进行更新，更新时不需要中断业务。</p>
+<p><strong>3.可用性</strong></p>
+<p>可用性一般为产品验收指标，即正常使用的情况下，操作成功率达到的标准。</p>
+<p>设计约束</p>
+<p>同前面的设计约束类似，此部分偏向于非功能需求方面的设计约束。如果前面已经提及，可以省略：<br>  ● 其它标准约束：财务处理、审计追踪等。<br>  ● 硬件限制：硬件配置要求。<br>场合适应性需求</p>
+<p>对给定场合、任务或操作方式的使用场合进行说明。如使用场景的配置、安装、调试。</p>
+<p>其它需求</p>
+<p>如果还有没表达清楚的，可以自行定义。</p>
+<p>以上是非功能需求的部分</p>
+<p>……………………………华丽的分割线…………………………………</p>
+<p>环境</p>
+<p>PRD中，最后一部分是环境，描述软件运行所需的环境支持：</p>
+<p><img src="http://ppdnya68j.bkt.clouddn.com/imgAC051818EE894CDD976C368AC97FAAAB.png" alt=""></p>
+<p>1.软件环境</p>
+<p>软件运行的环境，包括：<br>  ● 操作系统：如windows，ios，android，及其相关版本。<br>  ● 浏览器版本：软件使用的浏览器型号，及其相关版本。<br>  ● 软件支持：所需配合使用的软件。如名称、版本号等。<br>2.硬件环境</p>
+<p>硬件环境包含服务端运行的硬件环境，以及客户端运行的硬件环境。<br>  ● 运行设备：服务端一般为服务器型号要求，客户端一般为终端配置要求。<br>  ● 存储、设备：包含服务端用到的存储要求和相关的设备要求。<br>  ● 网络、带宽：包含服务端所需的网络、带宽需求。<br>总结</p>
+<p>以上是PRD可能涉及到的各个章节的描述，细化后的完整结构如下：</p>
+<p><img src="http://ppdnya68j.bkt.clouddn.com/img06699C975B8E44D0A193880DD2AE3004.png" alt=""></p>
+<p>还是那句话：</p>
+<p>PRD的形态会因为目标读者不同产生变化，但内容本质上不会变。</p>
+<p>以上为个人对PRD进行解构后的理解，我说的都是错的，希望对你有所帮助，若已自宫，赶快入宫。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>欣赏此文？求鼓励，求支持！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Song Liheng 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Song Liheng 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/产品/" rel="tag"># 产品</a>
+          
+            <a href="/tags/技能/" rel="tag"># 技能</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/22/产品知识/表格设计要素UX/" rel="next" title="表格设计要素">
+                <i class="fa fa-chevron-left"></i> 表格设计要素
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/02/产品知识/工作流总结/" rel="prev" title="工作流总结">
+                工作流总结 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/author.jpg" alt="Song Liheng">
+            
+              <p class="site-author-name" itemprop="name">Song Liheng</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#PRD的定位"><span class="nav-number">1.</span> <span class="nav-text">PRD的定位</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基本结构"><span class="nav-number">2.</span> <span class="nav-text">基本结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#封面"><span class="nav-number">2.0.1.</span> <span class="nav-text">封面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#版本信息"><span class="nav-number">2.0.2.</span> <span class="nav-text">版本信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编制说明"><span class="nav-number">2.0.3.</span> <span class="nav-text">编制说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#目录和正文"><span class="nav-number">2.0.4.</span> <span class="nav-text">目录和正文</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#引言"><span class="nav-number">2.0.5.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#背景"><span class="nav-number">2.0.6.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考资料"><span class="nav-number">2.0.7.</span> <span class="nav-text">参考资料</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#术语"><span class="nav-number">2.0.8.</span> <span class="nav-text">术语</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#概述"><span class="nav-number">2.0.9.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#项目／产品描述"><span class="nav-number">2.0.10.</span> <span class="nav-text">项目／产品描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#系统模型"><span class="nav-number">2.0.11.</span> <span class="nav-text">系统模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#假设和约束"><span class="nav-number">2.0.12.</span> <span class="nav-text">假设和约束</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#功能需求"><span class="nav-number">3.</span> <span class="nav-text">功能需求</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#概要功能需求"><span class="nav-number">3.1.</span> <span class="nav-text">概要功能需求</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#业务需求"><span class="nav-number">3.1.1.</span> <span class="nav-text">业务需求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#产品结构图"><span class="nav-number">3.1.2.</span> <span class="nav-text">产品结构图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#业务流程"><span class="nav-number">3.1.3.</span> <span class="nav-text">业务流程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#详细功能需求"><span class="nav-number">3.2.</span> <span class="nav-text">详细功能需求</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#业务功能"><span class="nav-number">3.2.1.</span> <span class="nav-text">业务功能</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#功能名称"><span class="nav-number">3.2.1.1.</span> <span class="nav-text">功能名称</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#业务流程-1"><span class="nav-number">3.2.1.2.</span> <span class="nav-text">业务流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#相关功能"><span class="nav-number">3.2.1.3.</span> <span class="nav-text">相关功能</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#界面原型"><span class="nav-number">3.2.1.4.</span> <span class="nav-text">界面原型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#业务规则"><span class="nav-number">3.2.1.5.</span> <span class="nav-text">业务规则</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#设计约束"><span class="nav-number">3.2.1.6.</span> <span class="nav-text">设计约束</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#验收标准"><span class="nav-number">3.2.1.7.</span> <span class="nav-text">验收标准</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#报表功能"><span class="nav-number">3.2.1.8.</span> <span class="nav-text">报表功能</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#功能名称-1"><span class="nav-number">3.2.1.8.1.</span> <span class="nav-text">功能名称</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#报表内容"><span class="nav-number">3.2.1.8.2.</span> <span class="nav-text">报表内容</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#界面原型-1"><span class="nav-number">3.2.1.8.3.</span> <span class="nav-text">界面原型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#报表框架"><span class="nav-number">3.2.1.8.4.</span> <span class="nav-text">报表框架</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#与业务功能相同，这里不再重复说明。"><span class="nav-number">3.2.1.8.5.</span> <span class="nav-text">与业务功能相同，这里不再重复说明。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#数据字典"><span class="nav-number">3.2.1.8.6.</span> <span class="nav-text">数据字典</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#非功能需求"><span class="nav-number">4.</span> <span class="nav-text">非功能需求</span></a></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Song Liheng</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

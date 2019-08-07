@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="产品,技能,权限,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="非原创，略有改动。原文作者安琪Angela，原文地址https://www.jianshu.com/p/281fce0f5002 发现每次设计权限体系都很痛苦，归根结底就是没有沉淀出一套方法论。看了下网上的文章大多是讲RBAC权限管理模型RBAC0介绍到RBAC3，看的吐血了，还是自己总结点实际点的东西。">
+<meta name="keywords" content="产品,技能,权限">
+<meta property="og:type" content="article">
+<meta property="og:title" content="权限管理：带着枷锁跳舞">
+<meta property="og:url" content="http://yoursite.com/2019/01/02/产品知识/权限管理/index.html">
+<meta property="og:site_name" content="笨鸟先飞">
+<meta property="og:description" content="非原创，略有改动。原文作者安琪Angela，原文地址https://www.jianshu.com/p/281fce0f5002 发现每次设计权限体系都很痛苦，归根结底就是没有沉淀出一套方法论。看了下网上的文章大多是讲RBAC权限管理模型RBAC0介绍到RBAC3，看的吐血了，还是自己总结点实际点的东西。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2019/01/02/产品知识/权限管理/img/2019-07-27-17-41-02.png">
+<meta property="og:image" content="http://yoursite.com/2019/01/02/产品知识/权限管理/img/2019-07-27-17-41-37.png">
+<meta property="og:updated_time" content="2019-07-28T03:28:06.504Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="权限管理：带着枷锁跳舞">
+<meta name="twitter:description" content="非原创，略有改动。原文作者安琪Angela，原文地址https://www.jianshu.com/p/281fce0f5002 发现每次设计权限体系都很痛苦，归根结底就是没有沉淀出一套方法论。看了下网上的文章大多是讲RBAC权限管理模型RBAC0介绍到RBAC3，看的吐血了，还是自己总结点实际点的东西。">
+<meta name="twitter:image" content="http://yoursite.com/2019/01/02/产品知识/权限管理/img/2019-07-27-17-41-02.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/01/02/产品知识/权限管理/">
+
+
+
+
+
+  <title>权限管理：带着枷锁跳舞 | 笨鸟先飞</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">笨鸟先飞</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/02/产品知识/权限管理/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Song Liheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/author.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笨鸟先飞">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">权限管理：带着枷锁跳舞</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-02T12:12:23+08:00">
+                2019-01-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>非原创，略有改动。原文作者<strong>安琪Angela</strong>，原文地址<a href="https://www.jianshu.com/p/281fce0f5002" target="_blank" rel="noopener">https://www.jianshu.com/p/281fce0f5002</a></p>
+<p>发现每次设计权限体系都很痛苦，归根结底就是没有沉淀出一套方法论。看了下网上的文章大多是讲RBAC权限管理模型RBAC0介绍到RBAC3，看的吐血了，还是自己总结点实际点的东西。</p>
+<a id="more"></a>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>设计B端产品，无可避免会涉及权限管理的问题。为什么呢？因为B端产品生来就是带着组织结构属性的，它辅助我们分工、协调和合作。所以我们的产品必须紧紧切合职、责、权这三个主题。</p>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>权限管理，一般指根据系统设置的安全规则或者安全策略，用户可以访问而且只能访问自己被授权的资源，不多不少。</p>
+<h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><p>为什么要做权限管理呢？</p>
+<ul>
+<li>权利不同可以了解的数据内容不同，保证数据隐私，避免数据泄密。</li>
+<li>职责不同所需要页面不同，保证操作效率，避免页面干扰；</li>
+<li>技术水平不同可以操作的功能不同，保证系统安全，避免操作风险；</li>
+</ul>
+<p>还有其他要素都注定了要独立出一个权限管理模块来规范操作和数据权限。</p>
+<h3 id="权责明晰"><a href="#权责明晰" class="headerlink" title="权责明晰"></a>权责明晰</h3><ul>
+<li>权：专人做专事，既可以防止误操作，又避免干扰。比如自身才可以编辑和删除。</li>
+<li>责：能将错误行为定位到人，落实责任。比如操作作业和表都带上责任人的信息。</li>
+</ul>
+<h3 id="界限分明"><a href="#界限分明" class="headerlink" title="界限分明"></a>界限分明</h3><ul>
+<li>功能：将功能按不同层级或者属性进行划分；</li>
+<li>数据：将数据按业务类型或者组织架构特性进行划分；</li>
+</ul>
+<h3 id="流程规范"><a href="#流程规范" class="headerlink" title="流程规范"></a>流程规范</h3><ul>
+<li>依赖：允许用户依赖别人作业和查看作业信息，保证组织的流畅性。</li>
+<li>继承：根据实际情况要考虑流程的容错性，比如是否可以跨节点确认。</li>
+</ul>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>所以每个用户都需要权限限定，但是直接给用户赋上权限，会有很多问题：</p>
+<ul>
+<li>工作量大，需要给每个用户依次赋上权限；</li>
+<li>灵活度低，如果某个操作权限关掉了，需要一个个找出用户依次修改权限；</li>
+</ul>
+<p>所以基于传统的权限模型进行改建，RBAC模型是一个成熟的权限模型，虽然被讲烂了，但是还是假装不知道重新介绍下。</p>
+<blockquote>
+<p>RBAC（Role-Based Access Control）基于角色的访问控制。不同于传统的权限模型直接赋予使用者权限，而是将权限赋予角色。</p>
+</blockquote>
+<pre><code>用户与角色相关联，是多对多关系；
+角色与权限相关联，是多对多关系。
+</code></pre><h3 id="项目管理"><a href="#项目管理" class="headerlink" title="项目管理"></a>项目管理</h3><p>项目是用来隔离数据和用户的。用户加入当前项目才可以享受该项目下的资源。你可以把项目当做部门就明白了，A部门的用户不可以查看B部门的数据。</p>
+<p>注意:<strong>删除项目，需要提示是否删除项目下的数据，如果删除有很多风险，那就禁用删除吧。还有一种折中的方法，就是删除时允许将项目下的资源迁移到其他项目。</strong></p>
+<h3 id="用户管理"><a href="#用户管理" class="headerlink" title="用户管理"></a>用户管理</h3><p>管理用户信息，以及对用户进行增删改查，包括用户名称、所属部门、联系电话等信息，至于密码，一般只能重置密码，而不是显示密码允许修改。</p>
+<p>注意</p>
+<ul>
+<li>源：一般我们可以和OA关联拿取账号，而不需要在产品里添加，保证内部系统信息一致性。</li>
+<li>目标：在产品中一些页面需要读取用户管理的用户信息。</li>
+<li>交接：如果用户的信息被产品某些功能所引用，必须考虑用户离职后，其创建的资源管理的问题，这时候被赋予所有权限的管理员是个很好的接盘侠。</li>
+</ul>
+<p><img src="/2019/01/02/产品知识/权限管理/img/2019-07-27-17-41-02.png" alt=""></p>
+<h3 id="用户组管理"><a href="#用户组管理" class="headerlink" title="用户组管理"></a>用户组管理</h3><p>用户组其实就是批量给用户赋予角色，将多个用户绑定为一个小组，再给这个小组赋予一个角色。</p>
+<p>注意：<strong>如果内部组织架构不复杂的话，最好不要加入用户组，不然增加了权限体系的复杂性，毕竟杀鸡焉用牛刀。</strong></p>
+<h3 id="角色管理"><a href="#角色管理" class="headerlink" title="角色管理"></a>角色管理</h3><p>管理角色信息，对角色进行增删改查，包括角色名称、角色描述和角色状态等。</p>
+<p>可以将角色理解为将权限打包成一个小组，那个小组就是一个角色。</p>
+<p>注意：<strong>角色停用后，用户被赋予这个权限就不生效。</strong></p>
+<p><img src="/2019/01/02/产品知识/权限管理/img/2019-07-27-17-41-37.png" alt=""></p>
+<h2 id="权限"><a href="#权限" class="headerlink" title="权限"></a>权限</h2><h3 id="页面权限"><a href="#页面权限" class="headerlink" title="页面权限"></a>页面权限</h3><p>页面权限指用户可以看到的页面。如果你的产品比较复杂，可能你需要从模块权限到菜单权限最后到页面权限。</p>
+<h3 id="操作权限"><a href="#操作权限" class="headerlink" title="操作权限"></a>操作权限</h3><p>操作权限指用户可以操作的内容，即按钮权限，是否有增删改查的权限。</p>
+<h2 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h2><h3 id="衔接自然"><a href="#衔接自然" class="headerlink" title="衔接自然"></a>衔接自然</h3><p>比如根据项目区分数据权限，根据岗位区分角色，将现实的角色与产品角色相关联，显得更自然。</p>
+<h3 id="轻装上阵"><a href="#轻装上阵" class="headerlink" title="轻装上阵"></a>轻装上阵</h3><p>很多人一讲到权限管理，就希望把它设计的非常全面严谨，但是逻辑上的全面严谨和功能上的全面严谨完全是两回事。如果前期不需要，完全没必要多抽象出几个概念，需要考虑的反而越多。所以在能满足权限的需求下，就不要多设概念，比如抽象出用户组这种，很可能基本用不到，而且还增加了系统复杂度。</p>
+<h3 id="随机应变"><a href="#随机应变" class="headerlink" title="随机应变"></a>随机应变</h3><p>难道一定要遵从RBAC模型吗？等你真正参与项目，就会发现，RBAC模型仅仅只是个开始，它只是帮你打好基础，之后还会有各种各样个性化的需求，绝对不仅仅现在说的这么简单······</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li>大数据开发平台权限管理</li>
+<li>后台经验分享：如何做权限管理系统设计</li>
+<li>后台系统：账号权限系统设计</li>
+<li>以RBAC模型为基础，分析B端权限系统的设计思路（业务技能）</li>
+<li>一个案例，三个角色，简单说下B端产品的权限设计</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>欣赏此文？求鼓励，求支持！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Song Liheng 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Song Liheng 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/产品/" rel="tag"># 产品</a>
+          
+            <a href="/tags/技能/" rel="tag"># 技能</a>
+          
+            <a href="/tags/权限/" rel="tag"># 权限</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/20/产品知识/产品经理的分类和自我判断/" rel="next" title="产品经理分类和自我判断">
+                <i class="fa fa-chevron-left"></i> 产品经理分类和自我判断
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/01/02/产品知识/后端产品日常总结/" rel="prev" title="后端产品经理日常">
+                后端产品经理日常 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/author.jpg" alt="Song Liheng">
+            
+              <p class="site-author-name" itemprop="name">Song Liheng</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">2.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原因"><span class="nav-number">3.</span> <span class="nav-text">原因</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#权责明晰"><span class="nav-number">3.1.</span> <span class="nav-text">权责明晰</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#界限分明"><span class="nav-number">3.2.</span> <span class="nav-text">界限分明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#流程规范"><span class="nav-number">3.3.</span> <span class="nav-text">流程规范</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原理"><span class="nav-number">4.</span> <span class="nav-text">原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#项目管理"><span class="nav-number">4.1.</span> <span class="nav-text">项目管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用户管理"><span class="nav-number">4.2.</span> <span class="nav-text">用户管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用户组管理"><span class="nav-number">4.3.</span> <span class="nav-text">用户组管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#角色管理"><span class="nav-number">4.4.</span> <span class="nav-text">角色管理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#权限"><span class="nav-number">5.</span> <span class="nav-text">权限</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#页面权限"><span class="nav-number">5.1.</span> <span class="nav-text">页面权限</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#操作权限"><span class="nav-number">5.2.</span> <span class="nav-text">操作权限</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#思考"><span class="nav-number">6.</span> <span class="nav-text">思考</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#衔接自然"><span class="nav-number">6.1.</span> <span class="nav-text">衔接自然</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#轻装上阵"><span class="nav-number">6.2.</span> <span class="nav-text">轻装上阵</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#随机应变"><span class="nav-number">6.3.</span> <span class="nav-text">随机应变</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">7.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Song Liheng</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
