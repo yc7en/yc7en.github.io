@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="产品,技能,规则,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="最近接收一些需求需要对业务上一些规则需要优化的问题。查看之前的文档基本没有，就给了一本厚厚的业务操作手册。这些规则的系统实现通过硬编码的方式实现，开发直接从数据库取数，然后if-else，实现方式如下：">
+<meta name="keywords" content="产品,技能,规则">
+<meta property="og:type" content="article">
+<meta property="og:title" content="客户准入规则的实现">
+<meta property="og:url" content="http://yoursite.com/2019/11/05/产品知识/规则思考01/index.html">
+<meta property="og:site_name" content="笨鸟先飞">
+<meta property="og:description" content="最近接收一些需求需要对业务上一些规则需要优化的问题。查看之前的文档基本没有，就给了一本厚厚的业务操作手册。这些规则的系统实现通过硬编码的方式实现，开发直接从数据库取数，然后if-else，实现方式如下：">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2019/11/05/产品知识/规则思考01/img/2019-07-28-18-22-46.png">
+<meta property="og:updated_time" content="2019-07-29T15:22:58.752Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="客户准入规则的实现">
+<meta name="twitter:description" content="最近接收一些需求需要对业务上一些规则需要优化的问题。查看之前的文档基本没有，就给了一本厚厚的业务操作手册。这些规则的系统实现通过硬编码的方式实现，开发直接从数据库取数，然后if-else，实现方式如下：">
+<meta name="twitter:image" content="http://yoursite.com/2019/11/05/产品知识/规则思考01/img/2019-07-28-18-22-46.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/11/05/产品知识/规则思考01/">
+
+
+
+
+
+  <title>客户准入规则的实现 | 笨鸟先飞</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">笨鸟先飞</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/05/产品知识/规则思考01/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Song Liheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/author.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笨鸟先飞">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">客户准入规则的实现</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-05T18:02:18+08:00">
+                2019-11-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>最近接收一些需求需要对业务上一些规则需要优化的问题。查看之前的文档基本没有，就给了一本厚厚的业务操作手册。这些规则的系统实现通过硬编码的方式实现，开发直接从数据库取数，然后if-else，实现方式如下：</p>
+<a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">/// &lt;summary&gt;</span><br><span class="line">/// 获取年龄【不】满足要求的共同借款人</span><br><span class="line">/// &lt;/summary&gt;</span><br><span class="line">/// &lt;param name=&quot;borrower&quot;&gt;&lt;/param&gt;</span><br><span class="line">/// &lt;returns&gt;&lt;/returns&gt;</span><br><span class="line">private List&lt;Coborrower&gt; GetCoborrowersAgeNotMeetRequired(Borrower borrower)</span><br><span class="line">&#123;</span><br><span class="line">    var notMeetRequiredCoborrowers = new List&lt;Coborrower&gt;();</span><br><span class="line">    //if (IsRepayLoan(borrower)) return notMeetRequiredCoborrowers;</span><br><span class="line">    var coborrowers = borrower.Coborrowers;</span><br><span class="line">    if (coborrowers == null || !coborrowers.Any()) return notMeetRequiredCoborrowers;</span><br><span class="line">    coborrowers.ForEach(coborrower =&gt;</span><br><span class="line">    &#123;</span><br><span class="line">        if (coborrower.Age &lt; DtoConstValue.CoborrowerAgeLowerLimit)</span><br><span class="line">        &#123;</span><br><span class="line">            notMeetRequiredCoborrowers.Add(coborrower);</span><br><span class="line">        &#125;</span><br><span class="line">        else</span><br><span class="line">        &#123;</span><br><span class="line">            if (coborrower.IsRenewBorrower)</span><br><span class="line">            &#123;</span><br><span class="line">                if (coborrower.Age &gt; DtoConstValue.CoborrowerAgeRenewUpperLimit)</span><br><span class="line">                &#123;</span><br><span class="line">                    notMeetRequiredCoborrowers.Add(coborrower);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            else</span><br><span class="line">            &#123;</span><br><span class="line">                if (coborrower.Age &gt; DtoConstValue.CoborrowerAgeFirstUpperLimit)</span><br><span class="line">                &#123;</span><br><span class="line">                    notMeetRequiredCoborrowers.Add(coborrower);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    return notMeetRequiredCoborrowers;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<p>这一做法的缺点：</p>
+<ul>
+<li>规则迭代成本高：对规则的少量改动就需要走全流程（开发、测试、部署）。最惨痛的经历，改个准入年龄都要等测试有时间。</li>
+<li>规则较多时，可维护性差。可能需要依赖于较熟练的开发。</li>
+<li>规则不可见。对于产品和业务人员，线上规则到底是怎样的，几乎是个谜。</li>
+</ul>
+<h2 id="需求浅析"><a href="#需求浅析" class="headerlink" title="需求浅析"></a>需求浅析</h2><p>仔细阅读业务手册之后，针对我们客户准入的一些判断标准，一共提炼了160多条需要判断的规则，这些规则一般都是硬约束，比如：</p>
+<ul>
+<li>客户准入年龄必须在20到60岁之间</li>
+<li>客户工作时间必须在12个月以上</li>
+<li>客户经营时间必须在6个月以上</li>
+</ul>
+<p>此外，规则需要对不同特征的贷款校验会不相同，比如。</p>
+<ul>
+<li>担保类：超过10万只有要求必须有非直系亲属担保人。而这个规则对信用类不需要僬侥</li>
+<li>重组类：对重组贷款各类经营时间和工作时间都不做限制。而这个规则对非重组的贷款是不生效的</li>
+</ul>
+<p>这个可以理解为规则集，即需要对不同的产品采用不同的策略集。</p>
+<p>需要有一个</p>
+<p>这些特点，功能需要支持：</p>
+<ul>
+<li>灵活的配置规则参数。如年龄和经营时间在后台可以很方便的配置</li>
+<li>能灵活的根据业务需要生效或者禁用某条规则</li>
+<li>不同的贷款类型走不同的规则集判断</li>
+</ul>
+<h2 id="需求实现"><a href="#需求实现" class="headerlink" title="需求实现"></a>需求实现</h2><p>根据以上特点提出</p>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>2018-10-24 </p>
+<p>系统业务量增大之后，由于规则校验是同步任务，时间较长，在线上</p>
+<h2 id="多规则先后次序"><a href="#多规则先后次序" class="headerlink" title="多规则先后次序"></a>多规则先后次序</h2><h2 id="多规则冲突解决机制"><a href="#多规则冲突解决机制" class="headerlink" title="多规则冲突解决机制"></a>多规则冲突解决机制</h2><p>规则引擎的基本模式:</p>
+<p><img src="/2019/11/05/产品知识/规则思考01/img/2019-07-28-18-22-46.png" alt=""></p>
+<p>原图地址:<a href="https://wenku.baidu.com/view/d7c3953987c24028915fc34f.html" target="_blank" rel="noopener">https://wenku.baidu.com/view/d7c3953987c24028915fc34f.html</a></p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.cnblogs.com/qiyexue/p/7822464.html" target="_blank" rel="noopener">规则引擎简介</a><br><a href="https://cloud.tencent.com/developer/article/1036488" target="_blank" rel="noopener">用Python实现简易可拓展的规则引擎</a><br><a href="https://www.cnblogs.com/163yun/p/9870171.html" target="_blank" rel="noopener">网易考拉规则引擎平台架构设计与实践</a><br><a href="https://blog.csdn.net/maso88/article/details/88719257" target="_blank" rel="noopener">从0到1：构建强大且易用的规则引擎</a><br><a href="https://wenku.baidu.com/view/d7c3953987c24028915fc34f.html" target="_blank" rel="noopener">规则引擎的定义及体系结构</a><br><a href="https://wenku.baidu.com/view/fb98e413cc7931b765ce15e1.html?sxts=1564379472440" target="_blank" rel="noopener">业务规则管理通用架构</a></p>
+<p><a href="https://wenku.baidu.com/view/be32959d27d3240c8547ef45.html" target="_blank" rel="noopener">https://wenku.baidu.com/view/be32959d27d3240c8547ef45.html</a></p>
+<p>找一些数据相关的业务规则，一些例子如下：</p>
+<ul>
+<li>只有当客户产生第一个订单时才创建该客户的记录。</li>
+<li>若一名学生没有选任何一门课程，把他的状态字段设为空。</li>
+<li>若销售员在一个月中卖出 10 套沙发，奖励 500 元。</li>
+<li>一个收件人必须至少有 1 个电话号码和 1 个收货地址。</li>
+<li>若一个订单的除税总额超过1000元则能有5%的折扣。</li>
+<li>若一个订单的除税总额超过500元则免运费。</li>
+<li>员工购买本公司商品能有5%的折扣</li>
+<li>若仓库中某货品的存量地域上月卖出的总量时，则需要进货。</li>
+</ul>
+<p>业务规则主要分为5类:</p>
+<ul>
+<li>事实 fact : 通常是对业务的真实描述，常常与重要的业务术语关联，事实也成为不变量——关于数据实体及其属性的不可改变的真实情况。</li>
+<li>约数 constraint: 约束限制了系统或它的用户可以执行哪些操作。例如: 图书馆的借阅者最多可以借10本书</li>
+<li>触发规则 action enabler: 在特定条件下触发某动作。如: 如某商品过期后，通知其当前持有人</li>
+<li>推论 inference: 推论是根据某个条件的真实性得到某些新事实的规则，通常用”if-then”的句式表达。如: 到期30天后还没有偿还，则该账户记为拖欠债务。</li>
+<li>计算 computation: 使用特定的数学公式或算法进行的计算业务规则。如:订单的数量为6~10件，则单价降低10%，数量为11~20件，单价降低20%。</li>
+</ul>
+<p>每次即使很小的变更都需要经过开发、测试、验证、上线等过程，变更成本较大；<br>长时间的规则变更，使系统变得更加难以维护；<br>新需求插入也比较困难，上线周期比较长；<br>开发人员熟悉业务的程度远比不上业务人员，却需要承担将业务规则准确无误实现的重任。</p>
+<p>将业务规则从技术实现中提取出来，实现技术和业务的分离，开发人员处理技术，业务人员定义业务规则，<br>各自做自己擅长的事。</p>
+<p>业务规则不再以程序代码的形式驻留在系统中，取而代之的是处理规则的规则引擎，业务规则存储在规则库中，完全独立于程序。业务人员可以像管理数据一样对业务规则进行管理，比如查询、添加、更新、统计、提交业务规则等。业务规则被加载到规则引擎中供应用系统调用。</p>
+<p>分离商业决策者的商业决策逻辑和应用开发者的技术决策<br>有效地提高实现复杂逻辑的代码的可维护性<br>在开发期间或部署后修复代码缺陷<br>应付特殊状况，即客户一开始没有提到要讲业务逻辑考虑在内<br>符合组合对敏捷或迭代开发过程的使用<br>规则能作为知识被保留下来，不会随着关键人员的流失而流失</p>
+<p>最主要的三点: 就是带来业务系统的敏捷性、企业业务知识的沉淀及决策分析提供支持。</p>
+<p>如果达到以上几点，就需要规则引擎产品能够:<br>提供有好的规则设置界面，让业务人员自行设置规则<br>提供完善的管理功能，使用软件工程思想管理规则的开发过程<br>提供良好的嵌入式架构，规则不仅能在BRMS中编辑，也能在业务系统中编辑，从而真正做到规则管理无处不在。</p>
+<p>业务规则的生命周期管理</p>
+<p>定义</p>
+<ul>
+<li>创建</li>
+<li>修改</li>
+<li>编辑</li>
+<li>存储</li>
+<li>模板</li>
+<li>权限</li>
+<li>组织</li>
+</ul>
+<p>发布</p>
+<ul>
+<li>审核</li>
+<li>验证</li>
+<li>存储</li>
+<li>部署</li>
+<li>报告</li>
+</ul>
+<p>运维</p>
+<ul>
+<li>运行</li>
+<li>撤销</li>
+<li>监控</li>
+<li>报告</li>
+<li>优化</li>
+</ul>
+<p>归档</p>
+<ul>
+<li>存档</li>
+<li>版本</li>
+<li>报告</li>
+<li>查询</li>
+</ul>
+<p>规则发布流程</p>
+<table>
+<thead>
+<tr>
+<th>行业</th>
+<th>应用</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>银行</td>
+<td>风险控制系统</td>
+<td>独立管理和配置风险监控规则</td>
+</tr>
+<tr>
+<td>银行</td>
+<td>数据分析系统</td>
+<td>配置和管理数据分析处理规则</td>
+</tr>
+<tr>
+<td>保险</td>
+<td>核保系统</td>
+<td>配置自动核保规则</td>
+</tr>
+<tr>
+<td>保险</td>
+<td>理赔计算</td>
+<td>配置理赔核算规则</td>
+</tr>
+<tr>
+<td>电信</td>
+<td>套餐计算</td>
+<td>配置套餐计算规则</td>
+</tr>
+<tr>
+<td>电信</td>
+<td>积分管理</td>
+<td>配置积分促销等规则</td>
+</tr>
+<tr>
+<td>企业</td>
+<td>促销策略管理</td>
+<td>配置促销、返点等营销策略管理</td>
+</tr>
+<tr>
+<td>企业</td>
+<td>管理系统之作</td>
+<td>快速各类基于数据库的管理系统</td>
+</tr>
+<tr>
+<td>制造</td>
+<td>生产排程优化</td>
+<td>设置生成排程评估及优化规则</td>
+</tr>
+<tr>
+<td>制造</td>
+<td>预测数据分析</td>
+<td>根据实际数据基于预测数据配置比较规则</td>
+</tr>
+<tr>
+<td>数据处理</td>
+<td>数据校验和转化</td>
+<td>配置校验和转化规则，配置输出结构</td>
+</tr>
+<tr>
+<td>数据处理</td>
+<td>数据分析和计算</td>
+<td>配置数据的批量清理、汇总等规则</td>
+</tr>
+</tbody>
+</table>
+<h2 id="信用卡的规则使用"><a href="#信用卡的规则使用" class="headerlink" title="信用卡的规则使用"></a>信用卡的规则使用</h2><p>用户输入要素:</p>
+<ul>
+<li>姓名</li>
+<li>性别</li>
+<li>年龄</li>
+<li>学历</li>
+<li>所在公司</li>
+<li>职位</li>
+<li>月收入</li>
+<li>是否有房</li>
+<li>是否有车</li>
+<li>是否有信用卡</li>
+</ul>
+<p>用户信息合法性检查规则</p>
+<table>
+<thead>
+<tr>
+<th>编号</th>
+<th>名称</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>检查学历与薪水1</td>
+<td>如果申请人既没房也没车，同时学历为大专及以下，并且月薪少于5000，那么不通过</td>
+</tr>
+<tr>
+<td>2</td>
+<td>检查学历与薪水2</td>
+<td>如果申请人既没房也没车，同时学历为大专或本科，并且月薪少于3000，那么不通过</td>
+</tr>
+<tr>
+<td>3</td>
+<td>检查学历与薪水3</td>
+<td>如果申请人既没房也没车，同时学历为本科以上，并且月薪少于2000，那么不通过</td>
+</tr>
+<tr>
+<td>4</td>
+<td>检查申请人信用卡数量</td>
+<td>如果申请人现有的信用卡数量大于10，那么不通过</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>编号</th>
+<th>名称</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>额度规则1</td>
+<td>如果申请人有房有车，或者月收入在20000元以上，那么发放的信用卡信用额度为15000</td>
+</tr>
+<tr>
+<td>2</td>
+<td>额度规则2</td>
+<td>如果申请人没房没车，且月收入在10000~20000元以上，那么发放的信用卡信用额度为15000</td>
+</tr>
+<tr>
+<td>3</td>
+<td>额度规则3</td>
+<td>如果申请人没房没车，且月收入在10000以下，那么发放的信用卡信用额度为3000</td>
+</tr>
+<tr>
+<td>4</td>
+<td>额度规则4</td>
+<td>如果申请人有房没车或者没房有车，且月收入在10000以下，那么发放的信用卡信用额度为5000</td>
+</tr>
+<tr>
+<td>5</td>
+<td>额度规则4</td>
+<td>如果申请人有房没车或者没房有车，且月收入在10000以下，那么发放的信用卡信用额度为8000</td>
+</tr>
+</tbody>
+</table>
+<h2 id="企业薪资计算"><a href="#企业薪资计算" class="headerlink" title="企业薪资计算"></a>企业薪资计算</h2><p>客户面临的问题</p>
+<pre><code>某大型快递公司员工达二十余万，公司在薪资计算方面面临岗位类别多，不同部门、不同岗位的薪资计算方式不同，一线员工采用基本工资+派件计件制/收件计件制/派件计重制/收件计重制/大客户营销提成制等混合计薪方式，二、三线员工采用基本工资+绩效工资的计薪方式，且员工绩效工资随着公司绩效指标的变化而变化。薪资计算量大、计算规则复杂多变，原有的薪资计算系统不能满足薪资计算的要求。
+</code></pre><p>解决办法: </p>
+<pre><code>通过在薪资计算系统中嵌入规则引擎，将薪资计算规则从应用程序代码中剥离，并通过规则配臵器对不同部门、不同岗位的薪资计算规则进行灵活快速地配臵，快速准确地完成海量数据的计算。
+</code></pre><h2 id="电商促销"><a href="#电商促销" class="headerlink" title="电商促销"></a>电商促销</h2><p>电商中遇到的一些规则:</p>
+<p>满减: 整张订单消费满x 节省百分比或数值 y 。适合全站促销。<br>从指定的目录或者产品集合里 面选购满 x 减百分比 或 数值<br>比如图书分类，满 100 减 10，满 200 减 25 等<br>购买某个或指定范围的产品节省百分比 或 数值<br>符合某个条件赠送某个产品<br>符合某个条件赠送指定产品集合里面某个产品（任选一）<br>比如满 98 元任选一赠品。<br>买 x 则y免费（同上）<br>买 x 后，若买 y 则节省 y%    或某数值<br>这种和前面的不同，更加复杂，类似产品包优惠。<br>某个产品特价（指定价格）<br>减、免运费（无条件）<br>减、免运费（有条件）<br>比如订单满多少金额，或某个会员级别。</p>
+<p>满足某个条件则最便宜的免费。<br>在指定的产品范围内，超过 3 件产品，则最便宜的免费（即最高折扣为 33%    off）<br>额外的积分赠送<br>免费的礼品包装<br>满x送y的优惠券</p>
+<p>促销规则规律和设计分析</p>
+<p>基本信息：</p>
+<ul>
+<li>规则标题、说明、图片</li>
+<li>规则有效时间、起始时间、结束时间</li>
+<li>规则组编号和优先级</li>
+<li>适用于除生效条件和规则优惠不同外</li>
+</ul>
+<p>规则生效条件</p>
+<ul>
+<li>单个产品、多个产品、产品组合、产品种类和全部产品</li>
+<li>最小数量（含）</li>
+<li>金额（含）</li>
+</ul>
+<p>规则结果：</p>
+<p>1、规则享受的价格（全体）、</p>
+<p>2、规则优惠</p>
+<ul>
+<li>节省 x%</li>
+<li>节省 x</li>
+<li>赠送优惠券</li>
+<li>减运费</li>
+<li>免运费</li>
+<li>额外积分（百分比）</li>
+<li>额外积分（数量）</li>
+<li>赠品:选择指定产品</li>
+<li>赠品:选择赠品组</li>
+<li>指定产品折扣百分比</li>
+<li>指定产品折扣节省金额</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>欣赏此文？求鼓励，求支持！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Song Liheng 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Song Liheng 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/产品/" rel="tag"># 产品</a>
+          
+            <a href="/tags/技能/" rel="tag"># 技能</a>
+          
+            <a href="/tags/规则/" rel="tag"># 规则</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/27/产品知识/权限管理/" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/author.jpg" alt="Song Liheng">
+            
+              <p class="site-author-name" itemprop="name">Song Liheng</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#需求浅析"><span class="nav-number">1.</span> <span class="nav-text">需求浅析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#需求实现"><span class="nav-number">2.</span> <span class="nav-text">需求实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后记"><span class="nav-number">3.</span> <span class="nav-text">后记</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多规则先后次序"><span class="nav-number">4.</span> <span class="nav-text">多规则先后次序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多规则冲突解决机制"><span class="nav-number">5.</span> <span class="nav-text">多规则冲突解决机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">6.</span> <span class="nav-text">参考</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#信用卡的规则使用"><span class="nav-number">7.</span> <span class="nav-text">信用卡的规则使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#企业薪资计算"><span class="nav-number">8.</span> <span class="nav-text">企业薪资计算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#电商促销"><span class="nav-number">9.</span> <span class="nav-text">电商促销</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Song Liheng</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
